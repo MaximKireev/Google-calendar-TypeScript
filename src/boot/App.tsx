@@ -1,12 +1,11 @@
 import React from 'react';
+import {BaseLayout} from '../components/BaseLayout/BaseLayout'
 
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-      
-      </header>
+      <BaseLayout />
     </div>
   );
 }

@@ -1,0 +1,73 @@
+import {ActionType} from '../redux/ActionTypesConstants'
+
+export interface Event {
+      eventId: number, 
+      data: string, 
+      title: string, 
+      description: string, 
+      timeFrom: string, 
+      timeTo: string, }
+
+export interface createEventAction {
+      type: ActionType.CREATE_NEW_CALENDAR_EVENT,
+      payload: Event    
+  };
+
+
+export interface pageOnLoadAction  {
+       type: ActionType.PAGE_WAS_LOADED
+  }
+
+export interface deleteEventAction {
+       type: ActionType.DELETE_CALENDAR_EVENT,
+       payload: string
+ };
+ 
+export interface setTodayAction {
+       type: ActionType.SET_DATE_TO_TODAY,
+ };
+ 
+export interface monthReverseAction {
+       type: ActionType.SWITCH_TO_A_MONTH_AGO,
+       payload: number
+ };
+
+export interface monthForwardAction {
+       type: ActionType.SWITCH_TO_ONE_MONTH_FORWARD,
+       payload: number
+  };
+export interface setSelectedDateAction {
+       type: ActionType.SET_SELECTED_DATE,
+       payload: string,
+  }
+
+export interface minusOneDayAction {
+       type: ActionType.SWITCH_TO_A_MINUS_ONE_DAY,
+       payload: number
+  };
+export interface plusOneDayForwardAction {
+       type: ActionType.SWITCH_TO_A_ONE_DAY_FORWARD,
+       payload: number
+  };
+
+export interface dayComponentWasLoadedAction {
+       type: ActionType.DAY_COMPONENT_WAS_LOADED,
+  };  
+  
+export interface monthComponentWasLoadedAction {
+       type: ActionType.MONTH_COMPONENT_WAS_LOADED,
+  };
+  
+export interface setSelectedEventIdAction {
+       type: ActionType.SET_SELECTED_EVENT_ID,
+       payload: string
+  };
+
+
+
+export type CalendarEventAction = 
+createEventAction | pageOnLoadAction| 
+deleteEventAction | setTodayAction | monthReverseAction | 
+monthForwardAction | setSelectedDateAction | minusOneDayAction |
+plusOneDayForwardAction | dayComponentWasLoadedAction | monthComponentWasLoadedAction |
+setSelectedEventIdAction
