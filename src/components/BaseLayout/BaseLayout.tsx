@@ -4,6 +4,7 @@ import React from 'react'
 import {Sidebar} from '../SideBar/SideBar'
 import { useSelector } from 'react-redux'
 import {selectIsSideBarVisible} from '../../redux/selectors'
+import {Calendar} from '../MonthViewComponents/MonthCalendar/MonthCalendar'
 
 
 export const BaseLayout: React.FC = () => {
@@ -15,6 +16,7 @@ export const BaseLayout: React.FC = () => {
         <Header />
         <div className="main-content">
        {isSideBarVisible? <Sidebar /> : null} 
+       <Calendar />
         </div>
         </div>
     )

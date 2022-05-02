@@ -1,4 +1,5 @@
 import { days, daysInMonth } from "./fixtures";
+import {CalendarMatrix} from '../ts-generalTypes/InitialStateInterfaces'
 
 export let date: Date = new Date();
 export let year: number = date.getFullYear();
@@ -12,7 +13,7 @@ const createCalendarMatrix = () => {
 
   let counter: number = 1;
   let counterAfter: number = 1;
-  let matrix = [];
+  let matrix: CalendarMatrix  = [];
   matrix[0] = days;
   for (let row: number = 1; row < 7; row++) {
     matrix.push([]);
@@ -40,7 +41,7 @@ const createCalendarMatrix = () => {
   return changeMinusOnesToDates(matrix, month);
 };
 
-function changeMinusOnesToDates(matrix, month) {
+function changeMinusOnesToDates(matrix: CalendarMatrix, month: number) {
   let adjustedMaxtrix = matrix;
   if (month === 0) month = 12;
   let prevMonthDates = daysInMonth[month - 1];

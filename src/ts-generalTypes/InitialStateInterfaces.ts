@@ -10,13 +10,26 @@ export interface CalendarInitialState {
         data: number,
         month: string,
         year: number},
-    currentCalendar?: [],
+    currentCalendar?: CalendarMatrix | [],
     currentSelectedDate?: string,
-    initialEvents?: [] | undefined,
+    initialEvents?: [],
     curentSelectedEventId?: string,
     currentCalendarView?: string,
     };
-export type RootReducer = {
+export interface RootReducer {
     UIreducer: UIinitialState,
     calendarReducer: CalendarInitialState,
 }
+export type WeekDayObject = {
+    day:  string | number,
+    id:  number | string,
+}
+export type DateObject  = {
+    cell?: boolean,
+    day: number | string,
+    id: number | string,
+    nextOrPrev?: boolean
+}
+
+export type CalendarMatrix = 
+Array<Array<(DateObject | WeekDayObject)>>
