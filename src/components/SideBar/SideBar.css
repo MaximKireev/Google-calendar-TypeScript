@@ -1,7 +1,6 @@
 .sidebar-wrapper{
     min-width: 20%;
-    position: absolute;
-    height: 100%;
+    height: 100vw;
     border-right:1px solid lightgrey;
     left: 0;
 }

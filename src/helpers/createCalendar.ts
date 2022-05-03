@@ -1,34 +1,40 @@
 import { days, daysInMonth } from "./fixtures";
+import {DayType} from '../ts-generalTypes/propTypes'
 
 export let date: Date = new Date();
-export let year: number = date.getFullYear();
-export let month: number = date.getMonth();
+export let year: number = date.getUTCFullYear();
+export let month: number = date.getUTCMonth();
 export let day: number = date.getDate();
-export let dayName: number = date.getDay();
+export let dayName: number = date.getUTCDay();
 
-const createCalendarMatrix = () => {
-  let firstDayOfMonth: number = new Date(year, month, 1).getDay();
+export const createCalendarMatrix = () => {
+  let firstDayOfMonth: number = new Date(year, month, 1).getUTCDay();
   let numOfDays: number = daysInMonth[month];
 
   let counter: number = 1;
   let counterAfter: number = 1;
-  let matrix = [];
-  matrix[0] = days;
-  for (let row: number = 1; row < 7; row++) {
+  let matrix: Array<Array<(DayType | number)>>  = [];
+  for (let row: number = 0; row < 7; row++) {
     matrix.push([]);
 
     for (let col: number = 0; col < 7; col++) {
       matrix[row][col] = -1;
-      if (row === 1 && col >= firstDayOfMonth) {
-        matrix[row][col] = { day: counter, id: `${counter}.${month}.${year}`, cell: true };
+      if (row === 0 && col >= firstDayOfMonth) {
+        matrix[row][col] = { 
+          day: counter, 
+          id: `${counter}.${month+1}.${year}`, 
+          cell: true };
         counter++;
-      } else if (row > 1 && counter <= numOfDays) {
-        matrix[row][col] = { day: counter, id: `${counter}.${month}.${year}`, cell: true };
+      } else if (row > 0 && counter <= numOfDays) {
+        matrix[row][col] = { 
+          day: counter, 
+          id: `${counter}.${month+1}.${year}`, 
+          cell: true };
         counter++;
-      } else if (row > 1 && counter > numOfDays) {
+      } else if (row > 0 && counter > numOfDays) {
         matrix[row][col] = {
           day: counterAfter,
-          id: `${counterAfter}.${month + 1}.${year}`,
+          id: `${counterAfter}.${month + 2}.${year}`,
           cell: true, 
           nextOrPrev: true
         };
@@ -40,17 +46,18 @@ const createCalendarMatrix = () => {
   return changeMinusOnesToDates(matrix, month);
 };
 
-function changeMinusOnesToDates(matrix, month) {
+
+function changeMinusOnesToDates(matrix: Array<Array<(DayType | number)>>, month: number) {
   let adjustedMaxtrix = matrix;
   if (month === 0) month = 12;
   let prevMonthDates = daysInMonth[month - 1];
 
   let counterOne = 0;
-  for (let i = adjustedMaxtrix[1].length - 1; i >= 0; i--) {
-    if (adjustedMaxtrix[1][i] === -1) {
-      adjustedMaxtrix[1][i] = {
+  for (let i = adjustedMaxtrix[0].length - 1; i >= 0; i--) {
+    if (adjustedMaxtrix[0][i] === -1) {
+      adjustedMaxtrix[0][i] = {
         day: prevMonthDates - counterOne,
-        id: `${prevMonthDates - counterOne}.${month - 1}.${year}`,
+        id: `${prevMonthDates - counterOne}.${month}.${year}`,
         cell: true, 
         nextOrPrev: true
       };
@@ -58,10 +65,9 @@ function changeMinusOnesToDates(matrix, month) {
     }
   }
 
-  return adjustedMaxtrix;
+  return adjustedMaxtrix ;
 }
 
-export { createCalendarMatrix };
 
 // function drawCalendar(calendarMatrix = undefined){
 // if(!calendarMatrix){

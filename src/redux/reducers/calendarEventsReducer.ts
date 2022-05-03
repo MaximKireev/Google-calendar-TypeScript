@@ -1,5 +1,5 @@
 
-// import {createCalendarMatrix, changeMonth} from '../../utils/createCalendar'
+import {createCalendarMatrix, changeMonth} from '../../helpers/createCalendar'
 import {getCurrentDate} from '../../helpers/getCurrentDate'
 // import {changeDateInDateView} from '../../utils/changeDateInDateView'
 // import {dateParser} from '../../utils/dateParser'
@@ -9,13 +9,13 @@ import {ActionType} from '../ActionTypesConstants'
 let eventsInLocalStorage = 
 JSON.parse(localStorage.getItem('events') || '[]')!;
 
-// let currentCalendar = createCalendarMatrix();
+let currentCalendar = createCalendarMatrix();
 
 
 
 const initialState: CalendarInitialState = {
     currentDate: getCurrentDate(),
-    currentCalendar: [],
+    currentCalendar: currentCalendar,
     currentSelectedDate: '',
     initialEvents: eventsInLocalStorage,
     curentSelectedEventId: '',

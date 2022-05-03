@@ -1,0 +1,17 @@
+
+.day-cell {
+    width: 25%;
+    height: 120px;
+    border: 1px solid rgb(237, 235, 235);
+    overflow: auto;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .day-cell:hover{
+background-color: rgb(241, 245, 246);
+  }
+.prevOrNextStyle{
+opacity: .4;}
+

@@ -1,8 +1,10 @@
+import {DayType} from '../ts-generalTypes/propTypes'
 export interface UIinitialState {
     isSideBarVisible?: boolean,
     isEventCreatorWindowVisible?: boolean,
     isEventModalVisible?: boolean,
     mouseCoordinates?: {x: number, y: number},
+    downloadWeekDaysName: { day: string, id: number }[]
 };
 export interface CalendarInitialState {
     currentDate?: {
@@ -10,7 +12,7 @@ export interface CalendarInitialState {
         data: number,
         month: string,
         year: number},
-    currentCalendar?: [],
+    currentCalendar?: Array<Array<(DayType | number)>>,
     currentSelectedDate?: string,
     initialEvents?: [] | undefined,
     curentSelectedEventId?: string,

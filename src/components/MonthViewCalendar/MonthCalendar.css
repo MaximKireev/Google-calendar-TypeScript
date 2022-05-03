@@ -1,0 +1,9 @@
+.calendar-wrapper{
+    width: 100%;
+    right: 0;
+    position: relative;
+    height: 100%;
+}
+.week-wrapper{
+    display: flex;
+}

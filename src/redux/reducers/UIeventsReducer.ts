@@ -1,12 +1,14 @@
 import {ActionType} from '../ActionTypesConstants'
 import {UIinitialState} from '../../ts-generalTypes/InitialStateInterfaces'
 import {UIAction} from '../../ts-generalTypes/UIactionsInterfaces'
+import {days} from '../../helpers/fixtures'
  
 const initialState: UIinitialState = {
     isSideBarVisible: true,
     isEventCreatorWindowVisible: false,
     isEventModalVisible: false,
     mouseCoordinates: {x: 0, y: 0},
+    downloadWeekDaysName: days
 };
 
 const UIComponentsreducer = (state: UIinitialState = initialState, action: UIAction) => {
