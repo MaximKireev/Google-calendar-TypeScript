@@ -1,27 +1,22 @@
 
-import {createCalendarMatrix, changeMonth} from '../../helpers/createCalendar'
 import {getCurrentDate} from '../../helpers/getCurrentDate'
-// import {changeDateInDateView} from '../../utils/changeDateInDateView'
-// import {dateParser} from '../../utils/dateParser'
-import {CalendarInitialState, CalendarMatrix} from '../../ts-generalTypes/InitialStateInterfaces'
+import {CalendarInitialState} from '../../ts-generalTypes/InitialStateInterfaces'
 import {CalendarEventAction} from '../../ts-generalTypes/calendarActionInterfaces'
 import {ActionType} from '../ActionTypesConstants'
-let eventsInLocalStorage = 
-JSON.parse(localStorage.getItem('events') || '[]')!;
+import {mockedData} from "../mocked-data";
 
-let currentCalendar: CalendarMatrix = createCalendarMatrix();
-console.log(currentCalendar)
+let eventsInLocalStorage = JSON.parse(localStorage.getItem('events') || '[]')!;
 
 
 
 const initialState: CalendarInitialState = {
     currentDate: getCurrentDate(),
-    currentCalendar: currentCalendar,
+    currentCalendar: mockedData,
     currentSelectedDate: '',
     initialEvents: eventsInLocalStorage,
     curentSelectedEventId: '',
     currentCalendarView: '',
-    };
+};
 
 const calendarEventsReducer = (state = initialState, action: CalendarEventAction) => {
     switch (action.type) {
