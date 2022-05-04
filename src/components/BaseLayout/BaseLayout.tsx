@@ -4,7 +4,7 @@ import React from 'react'
 import {Sidebar} from '../SideBar/SideBar'
 import { useSelector } from 'react-redux'
 import {selectIsSideBarVisible} from '../../redux/selectors'
-import Calendar from '../MonthViewCalendar/MonthCalendar'
+import {Calendar} from '../MonthViewComponents/MonthCalendar/MonthCalendar'
 
 
 export const BaseLayout: React.FC = () => {
