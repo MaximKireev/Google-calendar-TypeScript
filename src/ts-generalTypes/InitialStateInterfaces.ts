@@ -10,7 +10,6 @@ export interface UIinitialState {
     isEventModalVisible?: boolean,
     mouseCoordinates?: {x: number, y: number},
     downloadWeekDaysName: { day: string, id: number }[]
-    downloadWeekDaysName: { day: string, id: number }[]
 }
 
 export interface CalendarInitialState {

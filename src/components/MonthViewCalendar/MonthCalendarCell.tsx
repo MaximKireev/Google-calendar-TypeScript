@@ -9,7 +9,8 @@ type MonthCalendarCellProps = Pick<DayType, 'id' | 'day' | 'isCurrentMonth'> & {
 }
 
 export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
-  const {id, day, isCurrentMonth} = props
+  const {id, day, isCurrentMonth} = props;
+
 
   return (
     <div
