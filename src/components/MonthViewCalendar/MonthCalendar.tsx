@@ -5,26 +5,38 @@ import {selectWeekDaysName, selectCurrentCalendar} from '../../redux/selectors'
 import {useSelector} from 'react-redux'
 import {CalendarHeaderCell} from './CalendarHeaderCell'
 import {MonthCalendarCell} from './MonthCalendarCell'
+import {createCalendarMatrix} from "../../helpers/createCalendar";
+import {DayType} from "../../ts-generalTypes/propTypes";
 
 
 const Calendar = () => {
 
     const weekDaysName = useSelector(selectWeekDaysName);
-    const currentCalendar = useSelector(selectCurrentCalendar)!
-    
+
+    // const selectedDay = useSelector(selectSelectedDay);
+    // const onSetSelectedDay = useAction(setSelectedDay);
+
+  const currentCalendar = createCalendarMatrix();
+
+  const renderCalendarWeek = (week: DayType[]) => (
+    <div className='week-wrapper'>
+      {week.map(({id, day, isCurrentMonth}: DayType) => (
+        <MonthCalendarCell key={id} id={id} day={day} isCurrentMonth={isCurrentMonth} />
+      ))}
+    </div>
+  );
   
   return (
     <div className="calendar-wrapper">
       <ErrorBoundary>
       <div className="week-wrapper">
-          {weekDaysName.map(item => <CalendarHeaderCell days={item}/>)}
-          </div>
+        {weekDaysName.map(({id, day}) => (
+          <CalendarHeaderCell key={id} id={id} day={day}/>
+        ))}
+      </div>
       </ErrorBoundary>
       <ErrorBoundary>
-{currentCalendar.map((week: any) =>
-<div className='week-wrapper'>
-  {week.map((day: any) => <MonthCalendarCell dayprop = {day} />)}
-</div>)}
+        {currentCalendar.map(renderCalendarWeek)}
       </ErrorBoundary>
     </div>
   );

@@ -1,24 +1,16 @@
-import "./CalendarHeaderCell.css";
 import React from 'react'
-import {CalendarHeaderCellProps} from '../../ts-generalTypes/propTypes'
+import "./CalendarHeaderCell.css";
 
+export interface CalendarHeaderCellProps {
+  id: number;
+  day: string;
+  children?: JSX.Element;
+}
 
-
-
-export const CalendarHeaderCell: React.FC<CalendarHeaderCellProps> = (props) => {
-let {id, day} = props.days
-
-  return (
-    <div
-    key={id} 
-    className='day-cell'
-    >
+export const CalendarHeaderCell = ({id, day}: CalendarHeaderCellProps) => (
+  <div key={id} className='day-cell'>
     {day}
-     
-      
-     {props.children}
-    </div>
-  );
-};
+  </div>
+);
 
 
