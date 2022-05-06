@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import UIComponentsreducer from './UIeventsReducer'
-import calendarEventsReducer from './calendarEventsReducer'
+import UIComponentsreducer from "./UIeventsReducer";
+import calendarEventsReducer from "./calendarEventsReducer";
 
 export const masterReducer = combineReducers({
-    UIreducer: UIComponentsreducer,
-    calendarReducer: calendarEventsReducer,
-})
+	UIreducer: UIComponentsreducer,
+	calendarReducer: calendarEventsReducer,
+});

@@ -1,0 +1,12 @@
+.monthEvent {
+	display: block;
+	background-color: rgb(204, 248, 255);
+	margin: 5px;
+	text-align: left;
+	white-space: nowrap;
+	box-sizing: border-box;
+	overflow: hidden;
+	height: 40px;
+	border-radius: 5px;
+	padding: 0 5px;
+}

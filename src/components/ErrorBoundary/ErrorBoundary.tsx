@@ -1,27 +1,22 @@
-import React from 'react';
-import {FallBackComponent} from './FallBackComponent'
+import React from "react";
+import { FallBackComponent } from "./FallBackComponent";
 type Children = {
-    children: React.ReactNode
+	children: React.ReactNode;
+};
+
+export class ErrorBoundary extends React.Component<Children> {
+	state = {
+		hasError: false,
+	};
+
+	componentDidCatch() {
+		this.setState(() => {
+			hasError: true;
+		});
+	}
+	render() {
+		if (this.state.hasError) return <FallBackComponent />;
+
+		return this.props.children;
+	}
 }
-
-export class ErrorBoundary extends React.Component <Children>{
-    
-    state = {
-        hasError: false
-    }
-
-    componentDidCatch(){
-        this.setState(() => {hasError: true})
-    }
-    render(){
-        if(this.state.hasError) return <FallBackComponent />
-       
-       return this.props.children;
-    }
-
-
-        
-    }
-
-
- 

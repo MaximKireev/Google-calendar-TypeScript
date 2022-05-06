@@ -1,6 +1,6 @@
 import {DayType} from '../ts-generalTypes/propTypes'
-export type DataItem = {
-    id: Date, // need change to timestemp
+export type CalendarEventData = {
+    id: string, // need change to timestemp
     description: string
 }
 
@@ -18,7 +18,7 @@ export interface CalendarInitialState {
         data: number,
         month: string,
         year: number},
-    currentCalendar?: DataItem[],
+    currentCalendar?: CalendarEventData[],
     currentSelectedDate?: string,
     initialEvents?: [] | undefined,
     curentSelectedEventId?: string,

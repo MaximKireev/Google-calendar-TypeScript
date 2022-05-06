@@ -15,20 +15,19 @@ export const createCalendarMatrix = (date = new Date()) => {
 	let counterBefore: number = 1;
 	const matrix: DayType[][] = [];
 
-	for (let row: number = 0; row < 7; row++) {
+	for (let row = 0; row < 7; row++) {
 		matrix.push([]);
 
-		for (let col: number = 0; col < 7; col++) {
-			
+		for (let col = 0; col < 7; col++) {
 			if (row === 0 && col < firstDayOfMonth) {
 				matrix[row][col] = {
-					day: daysInMonth[month-1]-firstDayOfMonth+counterBefore,
-					id: `${counter}.${month + 1}.${year}`,
+					day: daysInMonth[month - 1] - firstDayOfMonth + counterBefore,
+					id: `${counterBefore}.${month}.${year}`,
 					cell: true,
 				};
 				counterBefore++;
 			}
-				
+
 			if (row === 0 && col >= firstDayOfMonth) {
 				matrix[row][col] = {
 					day: counter,
@@ -47,14 +46,11 @@ export const createCalendarMatrix = (date = new Date()) => {
 					isCurrentMonth: true,
 				};
 				counter++;
-			}
-
-			if (row > 0 && counter > numOfDays) {
+			} else if (row > 0 && counter > numOfDays) {
 				matrix[row][col] = {
 					day: counterAfter,
 					id: `${counterAfter}.${month + 2}.${year}`,
 					cell: true,
-					
 				};
 				counterAfter++;
 			}
