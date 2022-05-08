@@ -6,7 +6,6 @@ export const Sidebar: React.FC = () => {
 	return (
 		<div className="sidebar-wrapper">
 			<ErrorBoundary>
-                
             </ErrorBoundary>
 		</div>
 	);

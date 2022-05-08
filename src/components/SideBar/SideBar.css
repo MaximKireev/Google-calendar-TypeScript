@@ -1,6 +1,6 @@
 .sidebar-wrapper{
-    min-width: 20%;
-    height: 100vw;
+    width: 20%;
     border-right:1px solid lightgrey;
     left: 0;
+    background-color: green;
 }

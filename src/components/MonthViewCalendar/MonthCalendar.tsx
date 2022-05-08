@@ -8,7 +8,6 @@ import {
 import { useSelector } from "react-redux";
 import { CalendarHeaderCell } from "./CalendarHeaderCell";
 import { MonthCalendarCell } from "./MonthCalendarCell";
-import { createCalendarMatrix } from "../../helpers/createCalendar";
 import { DayType } from "../../ts-generalTypes/propTypes";
 
 const Calendar = () => {
@@ -17,7 +16,7 @@ const Calendar = () => {
 	// const selectedDay = useSelector(selectSelectedDay);
 	// const onSetSelectedDay = useAction(setSelectedDay);
 
-	const currentCalendar = createCalendarMatrix();
+	let currentCalendar = useSelector(selectCurrentCalendar)!;
 
 	const renderCalendarWeek = (week: DayType[]) => (
 		<div className="week-wrapper">
@@ -33,7 +32,7 @@ const Calendar = () => {
 	);
 
 	return (
-		<div className="calendar-wrapper">
+		<div className="month-calendar">
 			<ErrorBoundary>
 				<div className="week-wrapper">
 					{weekDaysName.map(({ id, day }) => (

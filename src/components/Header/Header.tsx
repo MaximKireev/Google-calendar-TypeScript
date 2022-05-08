@@ -7,6 +7,7 @@ import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
 import { Settings } from "./Settings/Settings";
 import { useDispatch } from "react-redux";
 import React from "react";
+import {MonthChanger} from '../MonthChanger/MonthChanger'
 
 const Header: React.FC = () => {
 	const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const Header: React.FC = () => {
 					<span className="logo-text1">Google</span>
 					<span className="logo-text2">Calendar</span>
 				</div>
+				<MonthChanger />
 			</ErrorBoundary>
 			<div className="headerWriteSide-wrapper">
 				{/* < ChangeCalendarView/> */}

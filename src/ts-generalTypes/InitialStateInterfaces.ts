@@ -18,9 +18,9 @@ export interface CalendarInitialState {
         data: number,
         month: string,
         year: number},
-    currentCalendar?: CalendarEventData[],
+    currentCalendar?: DayType[][],
     currentSelectedDate?: string,
-    initialEvents?: [] | undefined,
+    initialEvents?: CalendarEventData[],
     curentSelectedEventId?: string,
     currentCalendarView?: string,
 }

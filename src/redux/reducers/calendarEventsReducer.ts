@@ -1,16 +1,17 @@
 import { getCurrentDate } from "../../helpers/getCurrentDate";
+import {createCalendarMatrix} from '../../helpers/createCalendar'
 import { CalendarInitialState } from "../../ts-generalTypes/InitialStateInterfaces";
 import { CalendarEventAction } from "../../ts-generalTypes/calendarActionInterfaces";
 import { ActionType } from "../ActionTypesConstants";
 import { mockedData } from "../mocked-data";
+const initialCalendar = createCalendarMatrix();
 
-let eventsInLocalStorage = JSON.parse(localStorage.getItem("events") || "[]")!;
 
 const initialState: CalendarInitialState = {
 	currentDate: getCurrentDate(),
-	currentCalendar: mockedData,
+	currentCalendar: initialCalendar,
 	currentSelectedDate: "",
-	initialEvents: eventsInLocalStorage,
+	initialEvents: mockedData,
 	curentSelectedEventId: "",
 	currentCalendarView: "",
 };
@@ -22,16 +23,6 @@ const calendarEventsReducer = (
 	switch (action.type) {
 		case ActionType.PAGE_WAS_LOADED:
 			return state.initialEvents;
-		case ActionType.DAY_COMPONENT_WAS_LOADED:
-			return {
-				...state,
-				currentCalendarView: "dayView",
-			};
-		case ActionType.MONTH_COMPONENT_WAS_LOADED:
-			return {
-				...state,
-				currentCalendarView: "monthView",
-			};
 
 		// case ActionType.CREATE_NEW_CALENDAR_EVENT:
 		//     console.log(action.payload)
@@ -57,16 +48,17 @@ const calendarEventsReducer = (
 		//         ...state,
 		//         currentSelectedDate: dateParser(action.payload),
 		//       };
-		// case ActionType.SWITCH_TO_A_MONTH_AGO:
-		//     return {
-		//         ...state,
-		//         currentCalendar: changeMonth(action.payload)
-		//     };
-		// case ActionType.SWITCH_TO_ONE_MONTH_FORWARD:
-		//     return {
-		//         ...state,
-		//         currentCalendar: changeMonth(action.payload)
-		//     };
+		case ActionType.SWITCH_TO_A_MONTH_AGO:
+			console.log('currentCalendar is', state.currentCalendar)
+		    return {
+		        ...state,
+		        currentCalendar: createCalendarMatrix(undefined, action.payload)
+		    };
+		case ActionType.SWITCH_TO_ONE_MONTH_FORWARD:
+		    return {
+		        ...state,
+		        currentCalendar: createCalendarMatrix(undefined, action.payload)
+		    };
 		// case ActionType.SWITCH_TO_A_MINUS_ONE_DAY:
 		//     return {
 		//         ...state,

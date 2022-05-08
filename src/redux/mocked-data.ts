@@ -19,7 +19,7 @@ export const mockedData: CalendarEventData[] = [
 	},
 	{
 		id: '8.5.2022', // timestemp, 04.04.2025 12:55
-		description: "773473457",
+		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident vero nostrum voluptates obcaecati consequuntur recusandae, deserunt nisi eaque. Quisquam enim laudantium, quasi aperiam ea quam doloremque. Voluptates et saepe placeat.',
 	},
 ];
 

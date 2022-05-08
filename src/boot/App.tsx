@@ -3,7 +3,7 @@ import { BaseLayout } from "../components/BaseLayout/BaseLayout";
 
 const App: React.FC = () => {
 	return (
-		<div className="App">
+		<div className="app">
 			<BaseLayout />
 		</div>
 	);

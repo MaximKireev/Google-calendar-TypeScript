@@ -32,16 +32,17 @@ const setToday = () => {
 	};
 };
 
-const monthReverse = () => {
+const monthReverse = (val: number) => {
+	console.log('monthReverse action done, val is', val)
 	return {
 		type: ActionType.SWITCH_TO_A_MONTH_AGO,
-		payload: -1,
+		payload: val,
 	};
 };
-const monthForward = () => {
+const monthForward = (val: number) => {
 	return {
 		type: ActionType.SWITCH_TO_ONE_MONTH_FORWARD,
-		payload: 1,
+		payload: val,
 	};
 };
 const setSelectedDate = (id: string) => {
