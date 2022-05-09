@@ -1,15 +1,1 @@
-.day-cell {
-	font-weight: 300;
-	cursor: pointer;
-	text-align: center;
-	align-items: stretch;
-}
 
-.day-cell:hover {
-	background-color: rgb(241, 245, 246);
-}
-
-.day-cell .prevOrNextStyle {
-	opacity: 0.4;
-	
-}

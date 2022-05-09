@@ -41,6 +41,7 @@ const calendarEventsReducer = (
 		case ActionType.SET_DATE_TO_TODAY:
 			return {
 				...state,
+				currentCalendar: initialCalendar
 			};
 		// case ActionType.SET_SELECTED_DATE:
 
@@ -49,7 +50,6 @@ const calendarEventsReducer = (
 		//         currentSelectedDate: dateParser(action.payload),
 		//       };
 		case ActionType.SWITCH_TO_A_MONTH_AGO:
-			console.log('currentCalendar is', state.currentCalendar)
 		    return {
 		        ...state,
 		        currentCalendar: createCalendarMatrix(undefined, action.payload)

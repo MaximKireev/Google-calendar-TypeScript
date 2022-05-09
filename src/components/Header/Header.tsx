@@ -7,7 +7,9 @@ import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
 import { Settings } from "./Settings/Settings";
 import { useDispatch } from "react-redux";
 import React from "react";
-import {MonthChanger} from '../MonthChanger/MonthChanger'
+import {MonthChanger} from './MonthChanger/MonthChanger'
+import {CurrentDateHeader} from '../Header/CurrentDateHeader/CurrentDateHeader'
+import {SetTodayHeader} from './SetTodayHeader/SetTodayHeader'
 
 const Header: React.FC = () => {
 	const dispatch = useDispatch();
@@ -23,9 +25,11 @@ const Header: React.FC = () => {
 					</button>
 					<CalendarOutlined style={{ fontSize: "36px", color: "#08c" }} />
 					<span className="logo-text1">Google</span>
-					<span className="logo-text2">Calendar</span>
+					<span className="logo-text2"> Calendar</span>
 				</div>
 				<MonthChanger />
+				<SetTodayHeader />
+				<CurrentDateHeader />
 			</ErrorBoundary>
 			<div className="headerWriteSide-wrapper">
 				{/* < ChangeCalendarView/> */}

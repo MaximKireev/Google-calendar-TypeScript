@@ -33,7 +33,6 @@ const setToday = () => {
 };
 
 const monthReverse = (val: number) => {
-	console.log('monthReverse action done, val is', val)
 	return {
 		type: ActionType.SWITCH_TO_A_MONTH_AGO,
 		payload: val,
