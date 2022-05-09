@@ -1,11 +1,11 @@
-.month-calendar{
-   height: 100%;
-   position: absolute;
+
+.week-wrapper{
+   display: flex;
+   height: calc(100% / 7);
+   position: relative;
    top: 0;
    left: 0;
    right: 0;
    bottom: 0;
-}
-.week-wrapper{
-    display: flex;
+
 }

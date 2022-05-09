@@ -19,10 +19,8 @@ export const BaseLayout: React.FC = () => {
 		<div className="baseLayout-wrapper">
 			<Header />
 			<div className="main-content">
-				{isSideBarVisible ? <Sidebar /> : null}
-				<div className="calendar-wrapper">
+				<Sidebar /> 
 				<Calendar />
-				</div>
 				{isEventCreatorWindowVisible? <EventCreatorWindow /> : null}
 			</div>
 		</div>

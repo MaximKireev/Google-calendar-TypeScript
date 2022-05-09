@@ -32,7 +32,7 @@ const Calendar = () => {
 	);
 
 	return (
-		<div className="month-calendar">
+		<div >
 			<ErrorBoundary>
 				<div className="week-wrapper">
 					{weekDaysName.map(({ id, day }) => (
