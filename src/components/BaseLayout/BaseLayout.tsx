@@ -1,8 +1,8 @@
+import React from 'react'
 import Header from "../Header/Header";
-import "./BaseLayout.css";
-import React from "react";
-import { Sidebar } from "../SideBar/SideBar";
 import { useSelector } from "react-redux";
+import "./BaseLayout.css";
+import { Sidebar } from "../SideBar/SideBar";
 import { 
 	selectIsSideBarVisible,
 	selectIsEventCreatorWindowVisible
@@ -19,7 +19,7 @@ export const BaseLayout: React.FC = () => {
 		<div className="baseLayout-wrapper">
 			<Header />
 			<div className="main-content">
-				<Sidebar /> 
+				{isSideBarVisible? <Sidebar /> : null}
 				<Calendar />
 				{isEventCreatorWindowVisible? <EventCreatorWindow /> : null}
 			</div>

@@ -1,10 +1,11 @@
-import "./CalendarHeaderCell.css";
 import React from "react";
+import {useDispatch} from 'react-redux'
+import "./CalendarHeaderCell.css";
 import { DayType } from "../../ts-generalTypes/propTypes";
-import { getMonthCalendarEvents } from "../../redux/mocked-data";
 import { MonthCalendarEvent } from "./MonthCalendarEvent/MonthCalendarEvent";
 import {openEventCreatorWindow} from '../../redux/actions/actionsUI'
-import {useDispatch} from 'react-redux'
+import {useLocalStorageValue} from '../../hooks/useLocalStorageValue'
+
 
 type MonthCalendarCellProps = Pick<DayType,  "id" | "day" | "isCurrentMonth"> & {
 	children?: JSX.Element;
@@ -13,8 +14,9 @@ type MonthCalendarCellProps = Pick<DayType,  "id" | "day" | "isCurrentMonth"> & 
 export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
 	const { id, day, isCurrentMonth } = props;
 	const dispatch = useDispatch()
-
-	const listOfEventsThisDay = getMonthCalendarEvents(id);
+	const [val] = useLocalStorageValue(undefined, 'events');
+	
+	const listOfEventsThisDay = val.filter((item: {id: string, description: string}) => item.id === id);
 	const clickOnCellHandler = (event: React.MouseEvent) => {
 		const currentTarget = event.target as HTMLDivElement;
 
@@ -30,7 +32,7 @@ export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
 		>
 			{day}
 
-			{listOfEventsThisDay.map(event => (
+			{listOfEventsThisDay.map((event: {id: string, description: string}) => (
 				<MonthCalendarEvent {...event} />
 			))}
 		</div>

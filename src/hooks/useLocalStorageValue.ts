@@ -1,11 +1,18 @@
-import { stringify } from 'querystring'
 import React from 'react'
+import {mockedData} from '../redux/mocked-data'
 
-let initialStorageValue: string = window.localStorage.getItem('event')
+export const useLocalStorageValue = (initialValue = mockedData, key: string) => {
 
-export const useLocalStorageValue = (key, initialValue = initialStorageValue) => {
+    const getDataFromStorage = () => {
+        const storage = localStorage.getItem(key);
 
-    const [value, setValue] = React.useState<string>(initialValue)
+        if(storage){
+            return JSON.parse(storage)
+        }
+        return initialValue;
+    }
+
+    const [value, setValue] = React.useState(getDataFromStorage)
 
     React.useEffect(() => {
         window.localStorage.setItem(key, JSON.stringify(value))
