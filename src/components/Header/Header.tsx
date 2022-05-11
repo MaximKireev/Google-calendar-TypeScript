@@ -4,7 +4,7 @@ import "./Header.css";
 import { MenuOutlined, CalendarOutlined } from "@ant-design/icons";
 // import PeriodControl from './PeriodControl'
 import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
-import { Settings } from "./Settings/Settings";
+import { ThemeSwitcher } from "./ThemeSwitcher/ThemeSwitcher";
 import { useDispatch } from "react-redux";
 import React from "react";
 import {MonthChanger} from './MonthChanger/MonthChanger'
@@ -33,7 +33,7 @@ const Header: React.FC = () => {
 			</ErrorBoundary>
 			<div className="headerWriteSide-wrapper">
 				{/* < ChangeCalendarView/> */}
-				<Settings />
+				<ThemeSwitcher />
 			</div>
 		</div>
 	);

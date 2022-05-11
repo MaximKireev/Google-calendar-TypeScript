@@ -1,28 +1,30 @@
-import React from 'react'
+import React from "react";
 import Header from "../Header/Header";
 import { useSelector } from "react-redux";
 import "./BaseLayout.css";
 import { Sidebar } from "../SideBar/SideBar";
-import { 
+import {
 	selectIsSideBarVisible,
-	selectIsEventCreatorWindowVisible
+	selectIsEventCreatorWindowVisible,
 } from "../../redux/selectors";
 import Calendar from "../MonthViewCalendar/MonthCalendar";
-import EventCreatorWindow from '../EventCreator/EventCreatorForm'
-import './BaseLayout.css'
-import {EventDetailsPopup} from '../EventDetailsModal/ShowEventDetails/ShowEventDetails'
+import EventCreatorWindow from "../EventCreator/EventCreatorForm";
+import "./BaseLayout.css";
+import { EventDetailsPopup } from "../EventDetailsModal/ShowEventDetails/ShowEventDetails";
 
 export const BaseLayout: React.FC = () => {
 	const isSideBarVisible = useSelector(selectIsSideBarVisible);
-	const isEventCreatorWindowVisible = useSelector(selectIsEventCreatorWindowVisible)
+	const isEventCreatorWindowVisible = useSelector(
+		selectIsEventCreatorWindowVisible
+	);
 
 	return (
 		<div className="baseLayout-wrapper">
 			<Header />
 			<div className="main-content">
-				{isSideBarVisible? <Sidebar /> : null}
+				{isSideBarVisible ? <Sidebar /> : null}
 				<Calendar />
-				{isEventCreatorWindowVisible? <EventCreatorWindow /> : null}
+				{isEventCreatorWindowVisible ? <EventCreatorWindow /> : null}
 				<EventDetailsPopup />
 			</div>
 		</div>
