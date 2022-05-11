@@ -1,5 +1,5 @@
 import { ActionType } from "../ActionTypesConstants";
-import { Event } from "../../ts-generalTypes/calendarActionInterfaces";
+import { CalendarEventData } from "../../ts-generalTypes/InitialStateInterfaces";
 
 const pageOnLoad = () => {
 	return {
@@ -7,14 +7,13 @@ const pageOnLoad = () => {
 	};
 };
 
-const createEvent = (value: Event) => {
+const createEvent = (value: CalendarEventData) => {
 	let payload = {
-		eventId: value.eventId,
-		data: value.data,
+		id: value.id,
 		title: value.title,
-		description: value.description,
 		timeFrom: value.timeFrom,
-		timeTo: value.timeTo,
+		timeTo: value.timeTo, // need change to timestemp
+		description: value.description
 	};
 	return {
 		type: ActionType.CREATE_NEW_CALENDAR_EVENT,

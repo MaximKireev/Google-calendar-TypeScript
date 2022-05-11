@@ -5,14 +5,16 @@ import Draggable from "react-draggable";
 import React from "react";
 import { useDispatch } from "react-redux";
 import {closeEventCreatorWindow} from '../../redux/actions/actionsUI'
+import { useLocalStorageValue } from "../../hooks/useLocalStorageValue";
 
 
 
 const EventCreatorWindow = () => {
 	const dispatch = useDispatch()
 	const [inputValue, setInputValue] = React.useState('');
-	const [timeFrom, setTimeFrom] = React.useState();
-	const [timeTo, setTimeTo] = React.useState([]);
+	const [timeFrom, setTimeFrom] = React.useState('');
+	const [timeTo, setTimeTo] = React.useState('');
+	const [storageValue, setStorageValue] = useLocalStorageValue(undefined, 'events')
 
 	const [TextAreaValue, setTextAreaValue] = React.useState('');
 
@@ -28,15 +30,22 @@ const EventCreatorWindow = () => {
 
 		setTextAreaValue(currentTarget.value);
 	};
-	// const timeFromHandler = (event: React.SyntheticEvent<EventTarget>) => {
-	// 	const currentTarget = e.target as 
-	// 	setTimeFrom(currentTarget.value);
-	// };
-	// const timeToHandler = (event: React.SyntheticEvent<EventTarget>) => {
-	// 	setTimeTo(event.target.value);
-	// };
+	const timeFromHandler = (item: any) => {
+		let date = new Date (item._d);
+		setTimeFrom(`${date.getUTCHours()}:${date.getUTCMinutes()}`)
+		
+	};
+	const timeToHandler = (item:any ) => {
+		let date = new Date (item._d);
+		setTimeTo(`${date.getUTCHours()}:${date.getUTCMinutes()}`)
+	};
 	const hadleFormData = () => {
-		console.log(inputValue, timeFrom, timeTo, TextAreaValue)
+		setStorageValue([...storageValue, {
+		id: "1.5.2022",
+		title: inputValue,
+		timeFrom: timeFrom,
+		timeTo: timeTo,
+		description: TextAreaValue,}])
 	};
 
 	return (
@@ -57,8 +66,14 @@ const EventCreatorWindow = () => {
 				<div
 					style={{ display: "flex", justifyContent: "space-between" }}
 					className="selectTime-wrapper">
-                    <TimePicker minuteStep={15}/>
-                    <TimePicker minuteStep={15}/>
+                    <TimePicker
+					format = 'HH:mm'
+					onSelect = {(item) => timeFromHandler(item)}
+					minuteStep={15}/>
+                    <TimePicker
+					format = 'HH:mm'
+					onSelect = {(item) => timeToHandler(item)}
+					 minuteStep={15}/>
 				</div>
 				<textarea
 					onChange={TextAreaValueHandler}
