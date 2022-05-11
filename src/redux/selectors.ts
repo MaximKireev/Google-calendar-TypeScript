@@ -8,6 +8,6 @@ export const selectIsSideBarVisible = (state: RootReducer) =>  state.UIreducer.i
 // export const selectIsEventModalVisible = state => state.UIreducer.isEventModalVisible;
 // export const selectMouseCoordinates = state => state.UIreducer.mouseCoordinates;
 // export const selectCurrentCalendarView = state => state.UIreducer.currentCalendarView
-// export const selectCurrentSelectedEventId = state => state.calendarReducer.curentSelectedEventId
+export const selectCurrentSelectedEventId = (state: RootReducer) => state.calendarReducer.curentSelectedEventId
 export const selectWeekDaysName = (state: RootReducer) =>  state.UIreducer.downloadWeekDaysName
 

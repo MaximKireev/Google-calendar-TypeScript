@@ -1,0 +1,20 @@
+.eventDetails-wrapper{
+    width: 500px;
+    height: 200px;
+    position: absolute;
+    z-index: 999;
+    box-shadow: 0 0 1em lightgray;
+    opacity: 1;
+    background-color: rgb(253, 253, 253);
+    padding: 20px;
+    box-sizing: content-box;
+}
+.controls{
+    width: 100%;
+    display: flex;
+  justify-content: end;
+  margin-bottom: 15px;
+  gap: 20px;
+  
+  cursor: move;
+}

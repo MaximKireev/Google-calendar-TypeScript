@@ -10,6 +10,7 @@ import {
 import Calendar from "../MonthViewCalendar/MonthCalendar";
 import EventCreatorWindow from '../EventCreator/EventCreatorForm'
 import './BaseLayout.css'
+import {EventDetailsPopup} from '../EventDetailsModal/ShowEventDetails/ShowEventDetails'
 
 export const BaseLayout: React.FC = () => {
 	const isSideBarVisible = useSelector(selectIsSideBarVisible);
@@ -22,6 +23,7 @@ export const BaseLayout: React.FC = () => {
 				{isSideBarVisible? <Sidebar /> : null}
 				<Calendar />
 				{isEventCreatorWindowVisible? <EventCreatorWindow /> : null}
+				<EventDetailsPopup />
 			</div>
 		</div>
 	);

@@ -4,6 +4,7 @@ import "./CalendarHeaderCell.css";
 import { DayType } from "../../ts-generalTypes/propTypes";
 import { MonthCalendarEvent } from "./MonthCalendarEvent/MonthCalendarEvent";
 import { openEventCreatorWindow } from "../../redux/actions/actionsUI";
+import {setSelectedEventId} from '../../redux/actions/actionsCalendar'
 import { useLocalStorageValue } from "../../hooks/useLocalStorageValue";
 import { CalendarEventData } from "../../ts-generalTypes/InitialStateInterfaces";
 
@@ -25,7 +26,9 @@ export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
 
 		if (!currentTarget.className.includes("day-cell")) {
 			return;
-		} else dispatch(openEventCreatorWindow());
+		} else {
+			dispatch(setSelectedEventId(id))
+			dispatch(openEventCreatorWindow())};
 	};
 
 	return (

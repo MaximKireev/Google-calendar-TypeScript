@@ -1,51 +1,59 @@
 import "antd/dist/antd.css";
 import "./EventCreatorForm.css";
-import { TimePicker } from 'antd';
+import { TimePicker } from "antd";
 import Draggable from "react-draggable";
 import React from "react";
-import { useDispatch } from "react-redux";
-import {closeEventCreatorWindow} from '../../redux/actions/actionsUI'
+import { useDispatch, useSelector } from "react-redux";
+import { closeEventCreatorWindow } from "../../redux/actions/actionsUI";
 import { useLocalStorageValue } from "../../hooks/useLocalStorageValue";
-
-
+import { selectCurrentSelectedEventId } from "../../redux/selectors";
 
 const EventCreatorWindow = () => {
-	const dispatch = useDispatch()
-	const [inputValue, setInputValue] = React.useState('');
-	const [timeFrom, setTimeFrom] = React.useState('');
-	const [timeTo, setTimeTo] = React.useState('');
-	const [storageValue, setStorageValue] = useLocalStorageValue(undefined, 'events')
+	const dispatch = useDispatch();
+	const eventId = useSelector(selectCurrentSelectedEventId);
+	const [inputValue, setInputValue] = React.useState("");
+	const [timeFrom, setTimeFrom] = React.useState("");
+	const [timeTo, setTimeTo] = React.useState("");
+	const [storageValue, setStorageValue] = useLocalStorageValue(
+		undefined,
+		"events"
+	);
 
-	const [TextAreaValue, setTextAreaValue] = React.useState('');
+	const [TextAreaValue, setTextAreaValue] = React.useState("");
 
-	const inputValueHandler = (e: React.SyntheticEvent<EventTarget> ) => {
+	const inputValueHandler = (e: React.SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
-		const currentTarget = e.target as HTMLInputElement
+		const currentTarget = e.target as HTMLInputElement;
 		setInputValue(currentTarget.value);
 	};
 
 	const TextAreaValueHandler = (e: React.SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
-		const currentTarget = e.target as HTMLTextAreaElement
+		const currentTarget = e.target as HTMLTextAreaElement;
 
 		setTextAreaValue(currentTarget.value);
 	};
 	const timeFromHandler = (item: any) => {
-		let date = new Date (item._d);
-		setTimeFrom(`${date.getUTCHours()}:${date.getUTCMinutes()}`)
-		
+		let date = new Date(item._d);
+		setTimeFrom(`${date.getHours()}:${date.getMinutes()}`);
 	};
-	const timeToHandler = (item:any ) => {
-		let date = new Date (item._d);
-		setTimeTo(`${date.getUTCHours()}:${date.getUTCMinutes()}`)
+	const timeToHandler = (item: any) => {
+		let date = new Date(item._d);
+		setTimeTo(`${date.getHours()}:${date.getMinutes()}`);
 	};
 	const hadleFormData = () => {
-		setStorageValue([...storageValue, {
-		id: "1.5.2022",
-		title: inputValue,
-		timeFrom: timeFrom,
-		timeTo: timeTo,
-		description: TextAreaValue,}])
+		setStorageValue([
+			...storageValue,
+			{
+				id: eventId,
+				title: inputValue,
+				timeFrom: timeFrom,
+				timeTo: timeTo,
+				description: TextAreaValue,
+			},
+		]);
+
+		setTimeout(() => dispatch(closeEventCreatorWindow()), 10);
 	};
 
 	return (
@@ -65,15 +73,18 @@ const EventCreatorWindow = () => {
 				/>
 				<div
 					style={{ display: "flex", justifyContent: "space-between" }}
-					className="selectTime-wrapper">
-                    <TimePicker
-					format = 'HH:mm'
-					onSelect = {(item) => timeFromHandler(item)}
-					minuteStep={15}/>
-                    <TimePicker
-					format = 'HH:mm'
-					onSelect = {(item) => timeToHandler(item)}
-					 minuteStep={15}/>
+					className="selectTime-wrapper"
+				>
+					<TimePicker
+						format="HH:mm"
+						onSelect={(item) => timeFromHandler(item)}
+						minuteStep={15}
+					/>
+					<TimePicker
+						format="HH:mm"
+						onSelect={(item) => timeToHandler(item)}
+						minuteStep={15}
+					/>
 				</div>
 				<textarea
 					onChange={TextAreaValueHandler}
