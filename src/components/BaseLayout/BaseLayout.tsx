@@ -6,6 +6,7 @@ import { Sidebar } from "../SideBar/SideBar";
 import {
 	selectIsSideBarVisible,
 	selectIsEventCreatorWindowVisible,
+	selectIsEventModalVisible
 } from "../../redux/selectors";
 import Calendar from "../MonthViewCalendar/MonthCalendar";
 import EventCreatorWindow from "../EventCreator/EventCreatorForm";
@@ -16,6 +17,7 @@ export const BaseLayout: React.FC = () => {
 	const isEventCreatorWindowVisible = useSelector(
 		selectIsEventCreatorWindowVisible
 	);
+	const isEventModalVisible = useSelector(selectIsEventModalVisible)
 
 	return (
 		<div className="baseLayout-wrapper">
@@ -24,7 +26,7 @@ export const BaseLayout: React.FC = () => {
 				{isSideBarVisible ? <Sidebar /> : null}
 				<Calendar />
 				{isEventCreatorWindowVisible ? <EventCreatorWindow /> : null}
-				<EventDetailsPopup />
+				{isEventModalVisible? <EventDetailsPopup /> : null}
 			</div>
 		</div>
 	);

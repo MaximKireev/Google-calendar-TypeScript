@@ -13,7 +13,7 @@ const themes: Theme = {
 	},
 	dark: {
 		backgroundColor: "#333333",
-		color: "white",
+		color: "#16A5E1",
 	},
 };
 
