@@ -10,9 +10,8 @@ export const closeEventCreatorWindow = () => ({
 	type: ActionType.CLOSE_EVENT_CREATOR_WINDOW,
 });
 
-export const openEventModalPopup = (val: string) => ({
+export const openEventModalPopup = () => ({
 	type: ActionType.OPEN_EVENT_MODAL_POPUP,
-	payload: val,
 });
 
 export const closeEventModalPopup = () => ({

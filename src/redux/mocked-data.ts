@@ -2,35 +2,32 @@ import { CalendarEventData } from "../ts-generalTypes/InitialStateInterfaces";
 
 export const mockedData: CalendarEventData[] = [
 	{
-		id: "1.5.2022",
+		uniqueEventId: 441341341234,
+		date: "1.5.2022",
 		title: "Some title",
 		timeFrom: "04.04.2022 13:55",
 		timeTo: "04.04.2022 13:55", // need change to timestemp
 		description: "Lorem ipsum dolor sit amet consectetur adipisicing ",
 	},
 	{
-		id: "2.5.2022",
+		uniqueEventId: 772457252582572,
+		date: "2.5.2022",
 		title: "Some title",
 		timeFrom: "04.04.2022 13:55",
 		timeTo: "04.04.2022 13:55", // need change to timestemp
 		description: "Lorem ipsum dolor sit amet consectetur adipisicing ",
 	},
 	{
-		id: "4.5.2022",
+		uniqueEventId: 24343146234235,
+		date: "4.5.2022",
 		title: "Some title",
 		timeFrom: "04.04.2022 13:55",
 		timeTo: "04.04.2022 13:55", // need change to timestemp
 		description: "Lorem ipsum dolor sit amet consectetur adipisicing ",
 	},
 	{
-		id: "4.5.2022",
-		title: "Some title",
-		timeFrom: "04.04.2022 13:55",
-		timeTo: "04.04.2022 13:55", // need change to timestemp
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing ",
-	},
-	{
-		id: "8.5.2022",
+		uniqueEventId: 12121211121211,
+		date: "8.5.2022",
 		title: "Some title",
 		timeFrom: "04.04.2022 13:55",
 		timeTo: "04.04.2022 13:55", // need change to timestemp

@@ -5,7 +5,8 @@ export const pageOnLoad = () => ({ type: ActionType.PAGE_WAS_LOADED });
 
 export const createEvent = (value: CalendarEventData) => {
 	const payload = {
-		id: value.id,
+		uniqueEventId: value.uniqueEventId,
+		day: value.date,
 		title: value.title,
 		timeFrom: value.timeFrom,
 		timeTo: value.timeTo,

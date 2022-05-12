@@ -18,6 +18,7 @@ const EventCreatorWindow = () => {
 		undefined,
 		"events"
 	);
+	const generatedUniqueEventId = Math.floor(Math.random()*100000000)
 
 	const [TextAreaValue, setTextAreaValue] = React.useState("");
 
@@ -45,7 +46,8 @@ const EventCreatorWindow = () => {
 		setStorageValue([
 			...storageValue,
 			{
-				id: eventId,
+				uniqueEventId: generatedUniqueEventId,
+				date: eventId,
 				title: inputValue,
 				timeFrom: timeFrom,
 				timeTo: timeTo,

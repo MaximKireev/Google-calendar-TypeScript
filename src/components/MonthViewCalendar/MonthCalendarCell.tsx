@@ -17,7 +17,7 @@ export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
 	const dispatch = useDispatch();
 	const [val] = useLocalStorageValue(undefined, "events");
 	const listOfEventsThisDay = val.filter(
-		(item: CalendarEventData) => item.id === id
+		(item: CalendarEventData) => item.date === id
 	);
 	const clickOnCellHandler = (event: React.MouseEvent) => {
 		const currentTarget = event.target as HTMLDivElement;

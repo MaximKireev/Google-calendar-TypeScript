@@ -1,6 +1,7 @@
 import {DayType} from '../ts-generalTypes/propTypes'
 export type CalendarEventData = {
-    id: string,
+    uniqueEventId: number,
+    date: string,
     title: string,
     timeFrom: string,
     timeTo: string, // need change to timestemp

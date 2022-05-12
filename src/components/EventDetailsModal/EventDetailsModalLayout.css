@@ -8,10 +8,11 @@
 	padding: 20px;
 	box-sizing: content-box;
 }
+
 .controls {
 	width: 100%;
 	display: flex;
-	justify-content: end;
+	justify-content: flex-end;
 	margin-bottom: 15px;
 	gap: 20px;
 	cursor: move;
