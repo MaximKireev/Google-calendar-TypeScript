@@ -1,7 +1,7 @@
 import React from "react";
 import { FallBackComponent } from "./FallBackComponent";
 type Children = {
-	children: React.ReactNode;
+	children?: React.ReactNode;
 };
 
 export class ErrorBoundary extends React.Component<Children> {
@@ -15,7 +15,7 @@ export class ErrorBoundary extends React.Component<Children> {
 		});
 	}
 	render() {
-		if (this.state.hasError) return <FallBackComponent />;
+		if (this.state.hasError) return <FallBackComponent message = {'Ups, something goes realy bad!'}/>;
 
 		return this.props.children;
 	}

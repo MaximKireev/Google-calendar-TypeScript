@@ -1,20 +1,21 @@
-.baseLayout-wrapper{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: inherit;
-}
-.main-content{
-    width: 100%;
-    height: calc(100% - 70px);
-    display: flex;
+.baseLayout-wrapper {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: inherit;
 }
 
-.calendar-wrapper{
-    width: 80%;
-    height: 100%;
+.main-content {
+	width: 100%;
+	height: calc(100% - 70px);
+	display: flex;
+}
+
+.calendar-wrapper {
+	width: 80%;
+	height: 100%;
 }

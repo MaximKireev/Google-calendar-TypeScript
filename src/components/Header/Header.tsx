@@ -1,15 +1,13 @@
-import { toggleMenu } from "../../redux/actions/actionsUI";
-// import {ChangeCalendarView} from './ChangeCalendarView/ChangeCalendarView'
-import "./Header.css";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { MenuOutlined, CalendarOutlined } from "@ant-design/icons";
-// import PeriodControl from './PeriodControl'
+import "./Header.css";
+import { toggleMenu } from "../../redux/actions/actionsUI";
 import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
 import { ThemeSwitcher } from "./ThemeSwitcher/ThemeSwitcher";
-import { useDispatch } from "react-redux";
-import React from "react";
-import {MonthChanger} from './MonthChanger/MonthChanger'
-import {CurrentDateHeader} from '../Header/CurrentDateHeader/CurrentDateHeader'
-import {SetTodayHeader} from './SetTodayHeader/SetTodayHeader'
+import { MonthChanger } from "./MonthChanger/MonthChanger";
+import { CurrentDateHeader } from "../Header/CurrentDateHeader/CurrentDateHeader";
+import { SetTodayHeader } from "./SetTodayHeader/SetTodayHeader";
 
 const Header: React.FC = () => {
 	const dispatch = useDispatch();
@@ -32,7 +30,6 @@ const Header: React.FC = () => {
 				<CurrentDateHeader />
 			</ErrorBoundary>
 			<div className="headerWriteSide-wrapper">
-				{/* < ChangeCalendarView/> */}
 				<ThemeSwitcher />
 			</div>
 		</div>

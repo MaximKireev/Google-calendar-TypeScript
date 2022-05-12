@@ -1,42 +1,31 @@
 import { ActionType } from "../ActionTypesConstants";
 
-const toggleMenu = () => {
-	return {
-		type: ActionType.SHOW_HIDE_SIDEBAR,
-	};
-};
+export const toggleMenu = () => ({ type: ActionType.SHOW_HIDE_SIDEBAR });
 
-const openEventCreatorWindow = () => {
-	return {
-		type: ActionType.OPEN_EVENT_CREATOR_WINDOW,
-	};
-};
-const closeEventCreatorWindow = () => {
-	return {
-		type: ActionType.CLOSE_EVENT_CREATOR_WINDOW,
-	};
-};
-const openEventModalPopup = (val: boolean) => {
-	return {
-		type: ActionType.OPEN_EVENT_MODAL_POPUP,
-		payload: val,
-	};
-};
-const closeEventModalPopup = () => {
-	return {
-		type: ActionType.CLOSE_EVENT_MODAL_POPUP,
-	};
-};
+export const openEventCreatorWindow = () => ({
+	type: ActionType.OPEN_EVENT_CREATOR_WINDOW,
+});
 
-const setMouseCoordinates = (coordinates: object) => {
-	return { type: ActionType.SET_MOUSE_COORDINATES, payload: coordinates };
-};
+export const closeEventCreatorWindow = () => ({
+	type: ActionType.CLOSE_EVENT_CREATOR_WINDOW,
+});
 
-export {
-	toggleMenu,
-	openEventCreatorWindow,
-	closeEventCreatorWindow,
-	openEventModalPopup,
-	closeEventModalPopup,
-	setMouseCoordinates,
-};
+export const openEventModalPopup = (val: boolean) => ({
+	type: ActionType.OPEN_EVENT_MODAL_POPUP,
+	payload: val,
+});
+
+export const closeEventModalPopup = () => ({
+	type: ActionType.CLOSE_EVENT_MODAL_POPUP,
+});
+
+export const setMouseCoordinates = (coordinates: object) => ({
+	type: ActionType.SET_MOUSE_COORDINATES,
+	payload: coordinates,
+});
+
+export const changeColorTheme = () => ({
+	type: ActionType.CHANGE_COLOR_THEME,
+});
+
+

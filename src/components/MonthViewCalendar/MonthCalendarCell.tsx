@@ -4,10 +4,9 @@ import "./CalendarHeaderCell.css";
 import { DayType } from "../../ts-generalTypes/propTypes";
 import { MonthCalendarEvent } from "./MonthCalendarEvent/MonthCalendarEvent";
 import { openEventCreatorWindow } from "../../redux/actions/actionsUI";
-import {setSelectedEventId} from '../../redux/actions/actionsCalendar'
+import { setSelectedEventId } from "../../redux/actions/actionsCalendar";
 import { useLocalStorageValue } from "../../hooks/useLocalStorageValue";
 import { CalendarEventData } from "../../ts-generalTypes/InitialStateInterfaces";
-
 
 type MonthCalendarCellProps = Pick<DayType, "id" | "day" | "isCurrentMonth"> & {
 	children?: JSX.Element;
@@ -17,7 +16,6 @@ export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
 	const { id, day, isCurrentMonth } = props;
 	const dispatch = useDispatch();
 	const [val] = useLocalStorageValue(undefined, "events");
-
 	const listOfEventsThisDay = val.filter(
 		(item: CalendarEventData) => item.id === id
 	);
@@ -27,8 +25,9 @@ export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
 		if (!currentTarget.className.includes("day-cell")) {
 			return;
 		} else {
-			dispatch(setSelectedEventId(id))
-			dispatch(openEventCreatorWindow())};
+			dispatch(setSelectedEventId(id));
+			dispatch(openEventCreatorWindow());
+		}
 	};
 
 	return (

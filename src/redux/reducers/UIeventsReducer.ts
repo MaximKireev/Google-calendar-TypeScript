@@ -9,6 +9,7 @@ const initialState: UIinitialState = {
 	isEventModalVisible: false,
 	mouseCoordinates: { x: 0, y: 0 },
 	downloadWeekDaysName: days,
+	isDefaultTheme: true,
 };
 
 const UIComponentsreducer = (
@@ -45,6 +46,11 @@ const UIComponentsreducer = (
 			return {
 				...state,
 				mouseCoordinates: action.payload,
+			};
+		case ActionType.CHANGE_COLOR_THEME:
+			return {
+				...state,
+				isDefaultTheme: !state.isDefaultTheme,
 			};
 		default:
 			return state;

@@ -1,33 +1,43 @@
-import {ActionType} from '../redux/ActionTypesConstants'
+import { ActionType } from "../redux/ActionTypesConstants";
 
 export interface toggleMenuAction {
-    type: ActionType.SHOW_HIDE_SIDEBAR
-    payload?: Boolean    
+    type: ActionType.SHOW_HIDE_SIDEBAR;
+    payload?: Boolean;
 }
 
 export interface openEventCreatorWindowAction {
-      type: ActionType.OPEN_EVENT_CREATOR_WINDOW,
+    type: ActionType.OPEN_EVENT_CREATOR_WINDOW;
+}
+
+export interface closeEventCreatorWindowAction {
+    type: ActionType.CLOSE_EVENT_CREATOR_WINDOW;
+}
+
+export interface openEventModalPopupAction {
+    type: ActionType.OPEN_EVENT_MODAL_POPUP;
+    payload: boolean;
+}
+
+export interface closeEventModalPopupAction {
+    type: ActionType.CLOSE_EVENT_MODAL_POPUP;
+}
+
+export interface setMouseCoordinatesAction {
+    type: ActionType.SET_MOUSE_COORDINATES;
+    payload: { x: number; y: number };
+}
+
+export interface changeColorTheme {
+    type: ActionType.CHANGE_COLOR_THEME;
+}
+
+
+export type UIAction =
+    | toggleMenuAction
+    | openEventCreatorWindowAction
+    | closeEventCreatorWindowAction
+    | openEventModalPopupAction
+    | closeEventModalPopupAction
+    | setMouseCoordinatesAction
+    | changeColorTheme;
     
-  }
-  export interface closeEventCreatorWindowAction {
-        type: ActionType.CLOSE_EVENT_CREATOR_WINDOW
-  }
-  export interface openEventModalPopupAction {
-      type: ActionType.OPEN_EVENT_MODAL_POPUP,
-      payload: boolean
-    
-  }
-  export interface closeEventModalPopupAction {
-   
-      type: ActionType.CLOSE_EVENT_MODAL_POPUP
-  }
-
-
-  export interface setMouseCoordinatesAction{
-     type: ActionType.SET_MOUSE_COORDINATES,
-             payload: {x: number, y: number} 
-  }
-
-  export type UIAction = 
-  toggleMenuAction | openEventCreatorWindowAction | closeEventCreatorWindowAction |
-  openEventModalPopupAction | closeEventModalPopupAction | setMouseCoordinatesAction

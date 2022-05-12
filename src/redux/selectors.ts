@@ -1,13 +1,8 @@
 import {RootReducer} from '../ts-generalTypes/InitialStateInterfaces'
-// export const selectCurrentDate = (state: CalendarInitialState) => state.calendarReducer.currentDate;
-// export const selectCurrentSelectedDate = state => state.calendarReducer.currentSelectedDate;
-// export const selectInitialEvents = state => state.calendarReducer.initialEvents;
-export const selectCurrentCalendar = (state: RootReducer) => state.calendarReducer.currentCalendar;
-export const selectIsEventCreatorWindowVisible = (state: RootReducer) => state.UIreducer.isEventCreatorWindowVisible;
-export const selectIsSideBarVisible = (state: RootReducer) =>  state.UIreducer.isSideBarVisible
-// export const selectIsEventModalVisible = state => state.UIreducer.isEventModalVisible;
-// export const selectMouseCoordinates = state => state.UIreducer.mouseCoordinates;
-// export const selectCurrentCalendarView = state => state.UIreducer.currentCalendarView
-export const selectCurrentSelectedEventId = (state: RootReducer) => state.calendarReducer.curentSelectedEventId
-export const selectWeekDaysName = (state: RootReducer) =>  state.UIreducer.downloadWeekDaysName
+export const selectCurrentCalendar = (state: RootReducer) => state.calendar.currentCalendar;
+export const selectIsEventCreatorWindowVisible = (state: RootReducer) => state.uiReducer.isEventCreatorWindowVisible;
+export const selectIsSideBarVisible = (state: RootReducer) =>  state.uiReducer.isSideBarVisible
+export const selectCurrentSelectedEventId = (state: RootReducer) => state.calendar.curentSelectedEventId
+export const selectWeekDaysName = (state: RootReducer) =>  state.uiReducer.downloadWeekDaysName
+export const selectColorTheme = (state: RootReducer) =>  state.uiReducer.isDefaultTheme
 

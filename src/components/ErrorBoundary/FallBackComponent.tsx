@@ -1,5 +1,8 @@
 import React from "react";
+type FallBackComponentProps = {
+	message: string,
+}
 
-export const FallBackComponent: React.FC = () => {
-	return <h2 style={{ color: "red" }}> Ups, something goes realy bad!</h2>;
+export const FallBackComponent: React.FC<FallBackComponentProps> = ({message}) => {
+	return <h2 style={{ color: "red" }}>{message}</h2>;
 };

@@ -1,9 +1,9 @@
+import React from "react";
+import Draggable from "react-draggable";
+import { TimePicker } from "antd";
+import { useDispatch, useSelector } from "react-redux";
 import "antd/dist/antd.css";
 import "./EventCreatorForm.css";
-import { TimePicker } from "antd";
-import Draggable from "react-draggable";
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { closeEventCreatorWindow } from "../../redux/actions/actionsUI";
 import { useLocalStorageValue } from "../../hooks/useLocalStorageValue";
 import { selectCurrentSelectedEventId } from "../../redux/selectors";

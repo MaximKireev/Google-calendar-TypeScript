@@ -1,5 +1,7 @@
-import './Basement.css'
-import React from 'react'
+import React from "react";
+import "./Basement.css";
+
 export const Basement: React.FC = () => {
-    return <div className="basement"></div>
-}
+	return <div className="basement"></div>;
+};
+

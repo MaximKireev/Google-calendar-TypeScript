@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../Header/Header";
 import { useSelector } from "react-redux";
+import Header from "../Header/Header";
 import "./BaseLayout.css";
 import { Sidebar } from "../SideBar/SideBar";
 import {
@@ -9,7 +9,6 @@ import {
 } from "../../redux/selectors";
 import Calendar from "../MonthViewCalendar/MonthCalendar";
 import EventCreatorWindow from "../EventCreator/EventCreatorForm";
-import "./BaseLayout.css";
 import { EventDetailsPopup } from "../EventDetailsModal/ShowEventDetails/ShowEventDetails";
 
 export const BaseLayout: React.FC = () => {

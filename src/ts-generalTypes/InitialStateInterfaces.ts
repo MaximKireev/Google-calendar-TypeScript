@@ -12,7 +12,8 @@ export interface UIinitialState {
     isEventCreatorWindowVisible?: boolean,
     isEventModalVisible?: boolean,
     mouseCoordinates?: {x: number, y: number},
-    downloadWeekDaysName: { day: string, id: number }[]
+    downloadWeekDaysName: { day: string, id: number }[],
+    isDefaultTheme: boolean
 }
 
 export interface CalendarInitialState {
@@ -29,6 +30,6 @@ export interface CalendarInitialState {
 }
 
 export type RootReducer = {
-    UIreducer: UIinitialState,
-    calendarReducer: CalendarInitialState,
+    uiReducer: UIinitialState,
+    calendar: CalendarInitialState,
 }

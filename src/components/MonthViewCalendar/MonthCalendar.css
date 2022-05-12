@@ -1,14 +1,14 @@
-.month-wrapper{
-   width: 100%;
+.month-wrapper {
+	width: 100%;
 }
-.week-wrapper{
-   display: flex;
-   width: 100%;
-   height: calc(100% / 7);
-   position: relative;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
 
+.week-wrapper {
+	display: flex;
+	width: 100%;
+	height: calc(100% / 7);
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 }

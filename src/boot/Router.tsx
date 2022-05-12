@@ -20,18 +20,3 @@ const Router = () => {
 };
 
 export default Router;
-
-// calendar/:year/:month/:day
-// calendar/:1985/:07/:23
-// calendar/:1985/:07
-// calendar/:1985
-
-// calendar/:year/:month/:day
-// calendar/:1985/:07/:23
-// calendar/:1985/:07
-// calendar/:1985
-
-// calendar/:year/:month/:day
-// calendar/:1985/:07/:23
-// calendar/:1985/:07
-// calendar/:1985
