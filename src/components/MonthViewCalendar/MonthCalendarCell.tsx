@@ -8,12 +8,12 @@ import { setSelectedEventId } from "../../redux/actions/actionsCalendar";
 import { useLocalStorageValue } from "../../hooks/useLocalStorageValue";
 import { CalendarEventData } from "../../ts-generalTypes/InitialStateInterfaces";
 
-type MonthCalendarCellProps = Pick<DayType, "id" | "day" | "isCurrentMonth"> & {
+type MonthCalendarCellProps = Pick<DayType, "id" | "day" | "isCurrentMonth" | 'isToday'> & {
 	children?: JSX.Element;
 };
 
 export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
-	const { id, day, isCurrentMonth } = props;
+	const { id, day, isCurrentMonth, isToday } = props;
 	const dispatch = useDispatch();
 	const [val] = useLocalStorageValue(undefined, "events");
 	const listOfEventsThisDay = val.filter(
@@ -34,7 +34,7 @@ export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
 		<div
 			onClick={clickOnCellHandler}
 			key={id}
-			className={!isCurrentMonth ? "day-cell prevOrNextStyle" : "day-cell"}
+			className={!isCurrentMonth ? "day-cell prevOrNextStyle" : isToday? "day-cell today" : 'day-cell'}
 		>
 			{day}
 

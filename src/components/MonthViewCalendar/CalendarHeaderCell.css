@@ -16,3 +16,6 @@
 .prevOrNextStyle {
 	opacity: 0.4;
 }
+.today {
+	border: 3px solid #7982EC;
+}

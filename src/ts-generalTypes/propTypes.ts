@@ -8,6 +8,7 @@ export type DayType = {
 	isCurrentMonth?: boolean;
 	isNextMonth?: boolean;
 	eventsThisDay?: CalendarEventData[];
+	isToday?: boolean
 };
 
 

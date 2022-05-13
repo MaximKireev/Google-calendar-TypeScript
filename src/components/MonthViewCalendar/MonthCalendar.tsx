@@ -15,12 +15,13 @@ const Calendar = () => {
 	const currentCalendar = useSelector(selectCurrentCalendar)!;
 	const renderCalendarWeek = (week: DayType[]) => (
 		<div className="week-wrapper">
-			{week.map(({ id, day, isCurrentMonth }: DayType) => (
+			{week.map(({ id, day, isCurrentMonth, isToday }: DayType) => (
 				<MonthCalendarCell
 					key={id}
 					id={id}
 					day={day}
-					isCurrentMonth={isCurrentMonth}
+					isCurrentMonth={ isCurrentMonth }
+					isToday = { isToday }
 				/>
 			))}
 		</div>
