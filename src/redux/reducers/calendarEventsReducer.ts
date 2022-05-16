@@ -26,7 +26,7 @@ const calendarEventsReducer = (
 		case ActionType.SET_DATE_TO_TODAY:
 			return {
 				...state,
-				currentCalendar: initialCalendar,
+				currentCalendar: createCalendarMatrix(undefined, undefined, new Date().getUTCMonth(), new Date().getUTCFullYear()),
 			};
 
 		case ActionType.SWITCH_TO_A_MONTH_AGO:

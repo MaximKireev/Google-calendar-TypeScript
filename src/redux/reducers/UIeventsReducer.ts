@@ -7,6 +7,7 @@ const initialState: UIinitialState = {
 	isSideBarVisible: true,
 	isEventCreatorWindowVisible: false,
 	isEventModalVisible: false,
+	isEventModalEditable: false,
 	mouseCoordinates: { x: 0, y: 0 },
 	downloadWeekDaysName: days,
 	isDefaultTheme: true,
@@ -52,6 +53,11 @@ const UIComponentsreducer = (
 				...state,
 				isDefaultTheme: !state.isDefaultTheme,
 			};
+		case ActionType.EDIT_CALENDAR_EVENT:
+			return {
+				...state,
+				isEventModalEditable: !state.isEventModalEditable
+			}
 		default:
 			return state;
 	}

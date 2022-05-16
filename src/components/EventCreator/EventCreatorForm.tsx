@@ -8,17 +8,24 @@ import { closeEventCreatorWindow } from "../../redux/actions/actionsUI";
 import { useLocalStorageValue } from "../../hooks/useLocalStorageValue";
 import { selectCurrentSelectedEventId } from "../../redux/selectors";
 
+type FormErrors = {
+	titleError: { isEmpty: boolean; message?: string };
+	textAreaError?: { isEmpty: boolean; message: string };
+};
+
 const EventCreatorWindow = () => {
 	const dispatch = useDispatch();
 	const eventId = useSelector(selectCurrentSelectedEventId);
 	const [inputValue, setInputValue] = React.useState("");
 	const [timeFrom, setTimeFrom] = React.useState("");
 	const [timeTo, setTimeTo] = React.useState("");
+
 	const [storageValue, setStorageValue] = useLocalStorageValue(
 		undefined,
 		"events"
 	);
-	const generatedUniqueEventId = Math.floor(Math.random()*100000000)
+
+	const generatedUniqueEventId = Math.floor(Math.random() * 100000000);
 
 	const [TextAreaValue, setTextAreaValue] = React.useState("");
 
@@ -42,20 +49,21 @@ const EventCreatorWindow = () => {
 		let date = new Date(item._d);
 		setTimeTo(`${date.getHours()}:${date.getMinutes()}`);
 	};
-	const hadleFormData = () => {
-		setStorageValue([
-			...storageValue,
-			{
-				uniqueEventId: generatedUniqueEventId,
-				date: eventId,
-				title: inputValue,
-				timeFrom: timeFrom,
-				timeTo: timeTo,
-				description: TextAreaValue,
-			},
-		]);
-
-		setTimeout(() => dispatch(closeEventCreatorWindow()), 10);
+	const hadleFormData = (e: React.SyntheticEvent<EventTarget>) => {
+		{
+			setStorageValue([
+				...storageValue,
+				{
+					uniqueEventId: generatedUniqueEventId,
+					date: eventId,
+					title: inputValue,
+					timeFrom: timeFrom,
+					timeTo: timeTo,
+					description: TextAreaValue,
+				},
+			]);
+			setTimeout(() => dispatch(closeEventCreatorWindow()), 10);
+		}
 	};
 
 	return (
@@ -65,7 +73,7 @@ const EventCreatorWindow = () => {
 				y: 250,
 			}}
 		>
-			<form className="event-wrapper">
+			<form onSubmit={hadleFormData} className="event-wrapper">
 				<span className="event-data"></span>
 				<input
 					onChange={inputValueHandler}
@@ -73,6 +81,7 @@ const EventCreatorWindow = () => {
 					placeholder="Title here"
 					className="task-input"
 				/>
+
 				<div
 					style={{ display: "flex", justifyContent: "space-between" }}
 					className="selectTime-wrapper"
@@ -96,9 +105,8 @@ const EventCreatorWindow = () => {
 					cols={30}
 					rows={10}
 				></textarea>
-				<button onClick={hadleFormData} type="button" className="button-save">
-					Save task
-				</button>
+				<input type="submit" className="button-save" value={"Save task"} />
+
 				<button
 					type="button"
 					className="close"

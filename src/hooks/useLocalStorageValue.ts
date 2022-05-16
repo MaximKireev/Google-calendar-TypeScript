@@ -1,8 +1,9 @@
 import React from "react";
 import { mockedData } from "../redux/mocked-data";
+import {CalendarEventData} from '../ts-generalTypes/InitialStateInterfaces'
 
 export const useLocalStorageValue = (
-	initialValue = mockedData,
+	initialValue: string | CalendarEventData[] = mockedData,
 	key: string
 ) => {
 	const getDataFromStorage = () => {
@@ -18,6 +19,7 @@ export const useLocalStorageValue = (
 
 	React.useEffect(() => {
 		window.localStorage.setItem(key, JSON.stringify(value));
+
 	}, [value]);
 
 	return [value, setValue];

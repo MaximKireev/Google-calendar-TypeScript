@@ -6,4 +6,4 @@ export const selectCurrentSelectedEventId = (state: RootReducer) => state.calend
 export const selectWeekDaysName = (state: RootReducer) =>  state.uiReducer.downloadWeekDaysName
 export const selectColorTheme = (state: RootReducer) =>  state.uiReducer.isDefaultTheme;
 export const selectIsEventModalVisible = (state: RootReducer) => state.uiReducer.isEventModalVisible
-
+export const setIsEventModalEditable = (state: RootReducer) => state.uiReducer.isEventModalEditable

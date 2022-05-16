@@ -1,0 +1,11 @@
+[contenteditable='true']{
+    background-color: rgb(243, 243, 243);
+    outline: none;
+    animation: yellowFade 3s forwards;
+
+}
+
+@keyframes yellowFade {
+    from { background: lightYellow; }
+    to   { background: rgb(243, 243, 243); }
+  }

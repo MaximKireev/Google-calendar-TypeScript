@@ -27,4 +27,8 @@ export const changeColorTheme = () => ({
 	type: ActionType.CHANGE_COLOR_THEME,
 });
 
+export const makeEventDetailsModalEditable = () => ({
+	type: ActionType.EDIT_CALENDAR_EVENT
+})
+
 

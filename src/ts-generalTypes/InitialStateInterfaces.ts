@@ -12,6 +12,7 @@ export interface UIinitialState {
     isSideBarVisible?: boolean,
     isEventCreatorWindowVisible?: boolean,
     isEventModalVisible?: boolean,
+    isEventModalEditable: boolean,
     mouseCoordinates?: {x: number, y: number},
     downloadWeekDaysName: { day: string, id: number }[],
     isDefaultTheme: boolean

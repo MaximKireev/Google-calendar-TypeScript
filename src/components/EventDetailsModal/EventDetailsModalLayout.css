@@ -1,12 +1,10 @@
 .eventDetails-wrapper {
 	width: 500px;
-	height: 200px;
 	position: absolute;
 	z-index: 999;
 	box-shadow: 0 0 1em lightgray;
 	background-color: white;
 	padding: 20px;
-	box-sizing: content-box;
 }
 
 .controls {

@@ -7,8 +7,10 @@ import { useThemeContext } from "../hooks/useThemeContext";
 const App: React.FC = () => {
 	const theme = useThemeContext();
 	const isDefaulrColorTheme = useSelector(selectColorTheme);
+	
+
 	return (
-		<div className="app" style={isDefaulrColorTheme ? theme.light : theme.dark}>
+		<div className="app" style={isDefaulrColorTheme? theme.light : theme.dark}>
 			<BaseLayout />
 		</div>
 	);

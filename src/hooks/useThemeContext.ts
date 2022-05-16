@@ -4,7 +4,6 @@ import {useContext} from 'react'
 interface Theme {
 	light: { backgroundColor: string; color: string };
 	dark: { backgroundColor: string; color: string };
-	hipster?: { background: string; color: string };
 }
 const themes: Theme = {
 	light: {
@@ -12,8 +11,8 @@ const themes: Theme = {
 		color: "black",
 	},
 	dark: {
-		backgroundColor: "#333333",
-		color: "#16A5E1",
+		backgroundColor: "#31343F",
+		color: "#EAEAEA",
 	},
 };
 

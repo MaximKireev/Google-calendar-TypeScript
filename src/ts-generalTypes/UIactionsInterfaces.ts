@@ -30,6 +30,9 @@ export interface setMouseCoordinatesAction {
 export interface changeColorTheme {
     type: ActionType.CHANGE_COLOR_THEME;
 }
+export interface editCalendarEvent {
+    type: ActionType.EDIT_CALENDAR_EVENT
+} 
 
 
 export type UIAction =
@@ -39,5 +42,6 @@ export type UIAction =
     | openEventModalPopupAction
     | closeEventModalPopupAction
     | setMouseCoordinatesAction
-    | changeColorTheme;
+    | changeColorTheme
+    | editCalendarEvent;
     
