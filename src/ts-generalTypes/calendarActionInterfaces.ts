@@ -54,6 +54,10 @@ export interface setSelectedEventIdAction {
 	type: ActionType.SET_SELECTED_EVENT_ID;
 	payload: string;
 }
+export interface addNewEventToList {
+	type: ActionType.ADD_NEW_EVENT_TO_LIST,
+	payload: CalendarEventData
+}
 
 export type CalendarEventAction =
 	| createEventAction
@@ -67,4 +71,5 @@ export type CalendarEventAction =
 	| plusOneDayForwardAction
 	| dayComponentWasLoadedAction
 	| monthComponentWasLoadedAction
-	| setSelectedEventIdAction;
+	| setSelectedEventIdAction
+	| addNewEventToList

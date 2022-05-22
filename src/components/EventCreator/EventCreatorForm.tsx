@@ -5,20 +5,19 @@ import { useDispatch, useSelector } from "react-redux";
 import "antd/dist/antd.css";
 import "./EventCreatorForm.css";
 import { closeEventCreatorWindow } from "../../redux/actions/actionsUI";
+import { addNewEventToList } from "../../redux/actions/actionsCalendar";
 import { useLocalStorageValue } from "../../hooks/useLocalStorageValue";
 import { selectCurrentSelectedEventId } from "../../redux/selectors";
-
-type FormErrors = {
-	titleError: { isEmpty: boolean; message?: string };
-	textAreaError?: { isEmpty: boolean; message: string };
-};
+import { useInput, useTextArea } from "../../hooks/useFormElements";
 
 const EventCreatorWindow = () => {
 	const dispatch = useDispatch();
 	const eventId = useSelector(selectCurrentSelectedEventId);
-	const [inputValue, setInputValue] = React.useState("");
 	const [timeFrom, setTimeFrom] = React.useState("");
 	const [timeTo, setTimeTo] = React.useState("");
+	const inputValue = useInput('', true);
+	const textAreaValue = useTextArea('', true);
+	
 
 	const [storageValue, setStorageValue] = useLocalStorageValue(
 		undefined,
@@ -27,20 +26,7 @@ const EventCreatorWindow = () => {
 
 	const generatedUniqueEventId = Math.floor(Math.random() * 100000000);
 
-	const [TextAreaValue, setTextAreaValue] = React.useState("");
 
-	const inputValueHandler = (e: React.SyntheticEvent<EventTarget>) => {
-		e.preventDefault();
-		const currentTarget = e.target as HTMLInputElement;
-		setInputValue(currentTarget.value);
-	};
-
-	const TextAreaValueHandler = (e: React.SyntheticEvent<EventTarget>) => {
-		e.preventDefault();
-		const currentTarget = e.target as HTMLTextAreaElement;
-
-		setTextAreaValue(currentTarget.value);
-	};
 	const timeFromHandler = (item: any) => {
 		let date = new Date(item._d);
 		setTimeFrom(`${date.getHours()}:${date.getMinutes()}`);
@@ -50,20 +36,20 @@ const EventCreatorWindow = () => {
 		setTimeTo(`${date.getHours()}:${date.getMinutes()}`);
 	};
 	const hadleFormData = (e: React.SyntheticEvent<EventTarget>) => {
-		{
-			setStorageValue([
-				...storageValue,
-				{
-					uniqueEventId: generatedUniqueEventId,
-					date: eventId,
-					title: inputValue,
-					timeFrom: timeFrom,
-					timeTo: timeTo,
-					description: TextAreaValue,
-				},
-			]);
-			setTimeout(() => dispatch(closeEventCreatorWindow()), 10);
-		}
+		e.preventDefault();
+		const payload = {
+			uniqueEventId: generatedUniqueEventId,
+			date: eventId,
+			title: inputValue.value!,
+			timeFrom: timeFrom,
+			timeTo: timeTo,
+			description: textAreaValue.value!,
+		};
+		dispatch(addNewEventToList(payload));
+
+		setStorageValue([...storageValue, payload]);
+
+		setTimeout(() => dispatch(closeEventCreatorWindow()), 10);
 	};
 
 	return (
@@ -76,11 +62,9 @@ const EventCreatorWindow = () => {
 			<form onSubmit={hadleFormData} className="event-wrapper">
 				<span className="event-data"></span>
 				<input
-					onChange={inputValueHandler}
-					type="text"
-					placeholder="Title here"
-					className="task-input"
-				/>
+				className="task-input"
+				{...inputValue}/>
+				{inputValue.error && <span style={{ color: 'red'}}>{inputValue.error}</span>}
 
 				<div
 					style={{ display: "flex", justifyContent: "space-between" }}
@@ -98,17 +82,17 @@ const EventCreatorWindow = () => {
 					/>
 				</div>
 				<textarea
-					onChange={TextAreaValueHandler}
 					className="task-description"
-					name=""
-					id=""
 					cols={30}
 					rows={10}
+					{...textAreaValue}
 				></textarea>
+				{textAreaValue.error && <span style={{ color: 'red'}}>{textAreaValue.error}</span>}
+
 				<input type="submit" className="button-save" value={"Save task"} />
 
 				<button
-					type="button"
+					type="submit"
 					className="close"
 					onClick={() => dispatch(closeEventCreatorWindow())}
 				></button>

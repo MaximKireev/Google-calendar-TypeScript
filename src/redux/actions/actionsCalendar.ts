@@ -22,6 +22,10 @@ export const deleteEvent = (id: string) => ({
 	type: ActionType.DELETE_CALENDAR_EVENT,
 	payload: id,
 });
+export const addNewEventToList = (value: CalendarEventData) => ({
+		type: ActionType.ADD_NEW_EVENT_TO_LIST,
+		payload: value
+})
 
 export const setToday = () => ({ type: ActionType.SET_DATE_TO_TODAY });
 
@@ -62,3 +66,6 @@ export const setSelectedEventId = (id: string) => ({
 	type: ActionType.SET_SELECTED_EVENT_ID,
 	payload: id,
 });
+
+
+

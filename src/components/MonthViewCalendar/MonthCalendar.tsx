@@ -10,9 +10,15 @@ import { CalendarHeaderCell } from "./CalendarHeaderCell";
 import { MonthCalendarCell } from "./MonthCalendarCell";
 import { DayType } from "../../ts-generalTypes/propTypes";
 
-const Calendar = () => {
+interface MonthCalendaProps {
+size: string
+}
+
+const Calendar = ({size}: MonthCalendaProps) => {
 	const weekDaysName = useSelector(selectWeekDaysName);
 	const currentCalendar = useSelector(selectCurrentCalendar)!;
+	
+
 	const renderCalendarWeek = (week: DayType[]) => (
 		<div className="week-wrapper">
 			{week.map(({ id, day, isCurrentMonth, isToday }: DayType) => (
@@ -22,6 +28,7 @@ const Calendar = () => {
 					day={day}
 					isCurrentMonth={ isCurrentMonth }
 					isToday = { isToday }
+					size = {size}
 				/>
 			))}
 		</div>
@@ -32,7 +39,7 @@ const Calendar = () => {
 			<ErrorBoundary>
 				<div className="week-wrapper">
 					{weekDaysName.map(({ id, day }) => (
-						<CalendarHeaderCell key={id} id={id} day={day} />
+						<CalendarHeaderCell key={id} id={id} day={day} size = {size}/>
 					))}
 				</div>
 			</ErrorBoundary>

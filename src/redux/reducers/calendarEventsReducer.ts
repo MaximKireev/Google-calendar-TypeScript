@@ -3,14 +3,14 @@ import { createCalendarMatrix } from "../../helpers/createCalendar";
 import { CalendarInitialState } from "../../ts-generalTypes/InitialStateInterfaces";
 import { CalendarEventAction } from "../../ts-generalTypes/calendarActionInterfaces";
 import { ActionType } from "../ActionTypesConstants";
-import { mockedData } from "../mocked-data";
 const initialCalendar = createCalendarMatrix();
+const dataInLocalStorage = window.localStorage.getItem('events')!
 
 const initialState: CalendarInitialState = {
 	currentDate: getCurrentDate(),
 	currentCalendar: initialCalendar,
 	currentSelectedDate: "",
-	initialEvents: mockedData,
+	initialEvents: JSON.parse(dataInLocalStorage),
 	curentSelectedEventId: "",
 	currentCalendarView: "",
 };
@@ -46,6 +46,21 @@ const calendarEventsReducer = (
 				...state,
 				curentSelectedEventId: action.payload,
 			};
+		case ActionType.ADD_NEW_EVENT_TO_LIST:
+			return {
+				...state,
+				initialEvents: [...state.initialEvents, action.payload],
+			};
+		case ActionType.DELETE_CALENDAR_EVENT:
+			const index = state.initialEvents.map(item => item.uniqueEventId).indexOf(+action.payload);
+
+			return {
+				...state,
+				initialEvents: [
+					...state.initialEvents.slice(0, index),
+					...state.initialEvents.slice(index + 1)],
+			};
+	
 
 		default:
 			return state;

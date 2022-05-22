@@ -1,3 +1,15 @@
+.event-title, .event-description, .event-duration {
+    width: 80%;
+    outline: none;
+    border: none;
+    margin: 10px 10px 10px 0;
+    
+}
+.event-title {
+    font-size: 27px;
+    font-weight: 500;
+}
+
 [contenteditable='true']{
     background-color: rgb(243, 243, 243);
     outline: none;

@@ -24,7 +24,7 @@ export const BaseLayout: React.FC = () => {
 			<Header />
 			<div className="main-content">
 				{isSideBarVisible ? <Sidebar /> : null}
-				<Calendar />
+				<Calendar size = 'large' />
 				{isEventCreatorWindowVisible ? <EventCreatorWindow /> : null}
 				{isEventModalVisible? <EventDetailsPopup /> : null}
 			</div>

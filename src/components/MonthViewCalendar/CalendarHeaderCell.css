@@ -17,5 +17,13 @@
 	opacity: 0.4;
 }
 .today {
-	border: 3px solid #7982EC;
+	box-shadow:0px 0px 0px 2px #7982EC inset;
+}
+.small {
+	border: none;
+	border-radius: 50%;
+	width: 34px;
+	height: 34px;
+	overflow: hidden;
+	font-weight: 400;
 }
