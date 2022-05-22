@@ -5,7 +5,6 @@ import { CalendarEventAction } from "../../ts-generalTypes/calendarActionInterfa
 import { ActionType } from "../ActionTypesConstants";
 const initialCalendar = createCalendarMatrix();
 const dataInLocalStorage = window.localStorage.getItem('events')!
-
 const initialState: CalendarInitialState = {
 	currentDate: getCurrentDate(),
 	currentCalendar: initialCalendar,

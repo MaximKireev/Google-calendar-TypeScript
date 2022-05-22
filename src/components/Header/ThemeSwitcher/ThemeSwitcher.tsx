@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { changeColorTheme } from "../../../redux/actions/actionsUI";
 import { Switch } from "antd";
+import { changeColorTheme } from "../../../redux/actions/actionsUI";
 import {useLocalStorageValue} from '../../../hooks/useLocalStorageValue'
 
 export const ThemeSwitcher: React.FC = () => {
@@ -11,12 +11,12 @@ export const ThemeSwitcher: React.FC = () => {
 		"currentTheme"
 	);
 	const [checked, setChecked] = useLocalStorageValue(
-		'true',
+		false,
 		"themeSwitcherChecked"
 	);
 	const themeSwitchHandler = (val: boolean) => {
 		val? setThemeValue("Dark") : setThemeValue("Light");
-		val? setChecked(val) : setChecked(val);
+		setChecked(val)
 		dispatch(changeColorTheme())
 	}
 
@@ -25,7 +25,7 @@ export const ThemeSwitcher: React.FC = () => {
 			defaultChecked = {checked}
 			checkedChildren={themeValue}
 			unCheckedChildren={themeValue}
-			onChange={(val) => themeSwitchHandler(val)}
+			onChange={(val: boolean) => themeSwitchHandler(val)}
 		/>
 	);
 };

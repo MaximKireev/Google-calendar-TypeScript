@@ -3,7 +3,7 @@ import { mockedData } from "../redux/mocked-data";
 import {CalendarEventData} from '../ts-generalTypes/InitialStateInterfaces'
 
 export const useLocalStorageValue = (
-	initialValue: string | CalendarEventData[] = mockedData,
+	initialValue: boolean | string | CalendarEventData[] = mockedData,
 	key: string
 ) => {
 	const getDataFromStorage = () => {

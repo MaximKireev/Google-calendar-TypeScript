@@ -2,6 +2,7 @@ import { ActionType } from "../ActionTypesConstants";
 import { UIinitialState } from "../../ts-generalTypes/InitialStateInterfaces";
 import { UIAction } from "../../ts-generalTypes/UIactionsInterfaces";
 import { days } from "../../helpers/fixtures";
+const defaultThemeinStorage = JSON.parse(window.localStorage.getItem('themeSwitcherChecked')!)
 
 const initialState: UIinitialState = {
 	isSideBarVisible: true,
@@ -10,7 +11,7 @@ const initialState: UIinitialState = {
 	isEventModalEditable: false,
 	mouseCoordinates: { x: 0, y: 0 },
 	downloadWeekDaysName: days,
-	isDefaultTheme: true,
+	isDefaultTheme: defaultThemeinStorage,
 };
 
 const UIComponentsreducer = (

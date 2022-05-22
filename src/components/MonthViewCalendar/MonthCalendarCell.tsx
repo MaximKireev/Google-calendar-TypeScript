@@ -15,7 +15,7 @@ type MonthCalendarCellProps = Pick <DayType, "id" | "day" | "isCurrentMonth" | '
 export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
 	const { id, day, isCurrentMonth, isToday, size } = props;
 	const dispatch = useDispatch();
-	const listOfEventsInStorage = useSelector(setListOfEventsInStorage)!
+	const listOfEventsInStorage = useSelector(setListOfEventsInStorage)! || []
 	const listOfEventsThisDay = listOfEventsInStorage.filter(
 		(item: CalendarEventData) => item.date === id
 	);
