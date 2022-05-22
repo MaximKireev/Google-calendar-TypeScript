@@ -7,49 +7,73 @@ import {
 	setIsEventModalEditable,
 } from "../../../redux/selectors";
 import { makeEventDetailsModalEditable } from "../../../redux/actions/actionsUI";
-
+import { updateEventsList } from '../../../redux/actions/actionsCalendar'
 import { useLocalStorageValue } from "../../../hooks/useLocalStorageValue";
 import { CalendarEventData } from "../../../ts-generalTypes/InitialStateInterfaces";
-import './ShowEventDetails.css'
-import {useInput} from '../../../hooks/useFormElements'
+import "./ShowEventDetails.css";
+import { useInput } from "../../../hooks/useFormElements";
 
 export const EventDetailsPopup = () => {
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 	const id = useSelector(selectCurrentSelectedEventId);
 	const isEventModalEditable = useSelector(setIsEventModalEditable);
-	
-	const [events] = useLocalStorageValue(undefined, "events");
+
+	const [events, updateEventsInStorage] = useLocalStorageValue(undefined, "events");
 	const filteredEventData = events.filter(
 		(item: CalendarEventData) => item.uniqueEventId.toString() === id
 	);
 	const eventTitleValue = useInput(filteredEventData[0].title, false);
-	const eventDescriptionValue = useInput(filteredEventData[0].description, false);
+	const eventDescriptionValue = useInput(
+		filteredEventData[0].description,
+		false
+	);
 
+	const updateEventHandler = () => {
+		const updatedEventObject = {
+			...filteredEventData[0],
+			title: eventTitleValue.value,
+			description: eventDescriptionValue.value,
+		}
+		dispatch(updateEventsList(updatedEventObject));
+		const updateIndex = events.map((item: CalendarEventData) => item.uniqueEventId.toString()).indexOf(id);
+
+		updateEventsInStorage([
+			...events.slice(0, updateIndex), updatedEventObject,
+			...events.slice(updateIndex + 1)])
+	};
 	return (
 		<EventDetailsModalLayout>
-			<input className="event-title" 
+			<input
+				className="event-title"
 				disabled={!isEventModalEditable}
 				{...eventTitleValue}
-				/>
+			/>
 			<p
 				className="event-duration"
 				contentEditable={isEventModalEditable}
 			>{`${filteredEventData[0].timeFrom} - ${filteredEventData[0].timeTo}`}</p>
-			<input 
-			{...eventDescriptionValue}
-			className="event-description" disabled={!isEventModalEditable}/>
-			<div className = 'controls control-buttons'>
-				<Button type="primary" 
-				onClick={() => {}}
-				disabled = {!isEventModalEditable}
-				>Update event</Button>
-				<Button 
-				type="primary" 
-				danger
-				onClick={() => dispatch(makeEventDetailsModalEditable())}
-				disabled = {!isEventModalEditable}
-				>Cancel</Button>
-				</div>
+			<input
+				{...eventDescriptionValue}
+				className="event-description"
+				disabled={!isEventModalEditable}
+			/>
+			<div className="controls control-buttons">
+				<Button
+					type="primary"
+					onClick={updateEventHandler}
+					disabled={!isEventModalEditable}
+				>
+					Update event
+				</Button>
+				<Button
+					type="primary"
+					danger
+					onClick={() => dispatch(makeEventDetailsModalEditable())}
+					disabled={!isEventModalEditable}
+				>
+					Cancel
+				</Button>
+			</div>
 		</EventDetailsModalLayout>
 	);
 };

@@ -52,13 +52,24 @@ const calendarEventsReducer = (
 				initialEvents: [...state.initialEvents, action.payload],
 			};
 		case ActionType.DELETE_CALENDAR_EVENT:
-			const index = state.initialEvents.map(item => item.uniqueEventId).indexOf(+action.payload);
+			const deleteIndex = state.initialEvents.map(item => item.uniqueEventId).indexOf(+action.payload);
 
 			return {
 				...state,
 				initialEvents: [
-					...state.initialEvents.slice(0, index),
-					...state.initialEvents.slice(index + 1)],
+					...state.initialEvents.slice(0, deleteIndex),
+					...state.initialEvents.slice(deleteIndex + 1)],
+			};
+		case ActionType.UPDATE_EVENTS_LIST:
+			const id = +action.payload.uniqueEventId;
+			
+			const updateIndex = state.initialEvents.map(item => item.uniqueEventId).indexOf(id);
+
+			return {
+				...state,
+				initialEvents: [
+					...state.initialEvents.slice(0, updateIndex), action.payload,
+					...state.initialEvents.slice(updateIndex + 1)],
 			};
 	
 

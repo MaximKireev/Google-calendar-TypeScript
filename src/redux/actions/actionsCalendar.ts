@@ -66,6 +66,10 @@ export const setSelectedEventId = (id: string) => ({
 	type: ActionType.SET_SELECTED_EVENT_ID,
 	payload: id,
 });
+export const updateEventsList = (value: CalendarEventData) => ({
+	type: ActionType.UPDATE_EVENTS_LIST,
+	payload: value,
+});
 
 
 
