@@ -2,13 +2,16 @@ import { ActionType } from "../ActionTypesConstants";
 import { UIinitialState } from "../../ts-generalTypes/InitialStateInterfaces";
 import { UIAction } from "../../ts-generalTypes/UIactionsInterfaces";
 import { days } from "../../helpers/fixtures";
-const defaultThemeinStorage = JSON.parse(window.localStorage.getItem('themeSwitcherChecked')!)
+const defaultThemeinStorage = JSON.parse(
+	window.localStorage.getItem("themeSwitcherChecked")!
+);
 
 const initialState: UIinitialState = {
 	isSideBarVisible: true,
 	isEventCreatorWindowVisible: false,
 	isEventModalVisible: false,
 	isEventModalEditable: false,
+	isLoginWindowVisible: false,
 	mouseCoordinates: { x: 0, y: 0 },
 	downloadWeekDaysName: days,
 	isDefaultTheme: defaultThemeinStorage,
@@ -44,6 +47,19 @@ const UIComponentsreducer = (
 				...state,
 				isEventModalVisible: false,
 			};
+
+		case ActionType.SHOW_LOGIN_WINDOW:
+			return {
+				...state,
+				isLoginWindowVisible: true,
+			};
+			
+		case ActionType.HIDE_LOGIN_WINDOW:
+			return {
+				...state,
+				isLoginWindowVisible: false,
+			};
+
 		case ActionType.SET_MOUSE_COORDINATES:
 			return {
 				...state,
@@ -57,8 +73,8 @@ const UIComponentsreducer = (
 		case ActionType.EDIT_CALENDAR_EVENT:
 			return {
 				...state,
-				isEventModalEditable: !state.isEventModalEditable
-			}
+				isEventModalEditable: !state.isEventModalEditable,
+			};
 		default:
 			return state;
 	}

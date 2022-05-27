@@ -48,7 +48,7 @@ const calendarEventsReducer = (
 		case ActionType.ADD_NEW_EVENT_TO_LIST:
 			return {
 				...state,
-				initialEvents: [...state.initialEvents, action.payload],
+				initialEvents: [...state.initialEvents || [], action.payload],
 			};
 		case ActionType.DELETE_CALENDAR_EVENT:
 			const deleteIndex = state.initialEvents.map(item => item.uniqueEventId).indexOf(+action.payload);

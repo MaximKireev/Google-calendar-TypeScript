@@ -15,7 +15,8 @@ export interface UIinitialState {
     isEventModalEditable: boolean,
     mouseCoordinates?: {x: number, y: number},
     downloadWeekDaysName: { day: string, id: number }[],
-    isDefaultTheme: boolean
+    isDefaultTheme: boolean,
+    isLoginWindowVisible: boolean,
 }
 
 export interface CalendarInitialState {
