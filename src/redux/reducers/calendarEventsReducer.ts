@@ -3,13 +3,14 @@ import { createCalendarMatrix } from "../../helpers/createCalendar";
 import { CalendarInitialState } from "../../ts-generalTypes/InitialStateInterfaces";
 import { CalendarEventAction } from "../../ts-generalTypes/calendarActionInterfaces";
 import { ActionType } from "../ActionTypesConstants";
+import { getLocalStorageData } from '../../helpers/local-storage-utils'
 const initialCalendar = createCalendarMatrix();
-const dataInLocalStorage = window.localStorage.getItem('events')!
+const dataInLocalStorage = getLocalStorageData('events')!
 const initialState: CalendarInitialState = {
 	currentDate: getCurrentDate(),
 	currentCalendar: initialCalendar,
 	currentSelectedDate: "",
-	events: JSON.parse(dataInLocalStorage),
+	events: dataInLocalStorage,
 	curentSelectedEventId: "",
 	currentCalendarView: "",
 };

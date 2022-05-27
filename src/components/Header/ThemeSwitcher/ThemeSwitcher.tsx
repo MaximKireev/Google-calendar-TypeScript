@@ -2,29 +2,28 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Switch } from "antd";
 import { changeColorTheme } from "../../../redux/actions/actionsUI";
-import {useLocalStorageValue} from '../../../hooks/useLocalStorageValue'
+
+import {
+	getLocalStorageData,
+	setLocalStorageData,
+} from "../../../helpers/local-storage-utils";
 
 export const ThemeSwitcher: React.FC = () => {
 	const dispatch = useDispatch();
-	const [themeValue, setThemeValue] = useLocalStorageValue(
-		'Light',
-		"currentTheme"
-	);
-	const [checked, setChecked] = useLocalStorageValue(
-		false,
-		"themeSwitcherChecked"
-	);
+	const checked: string = getLocalStorageData("themeSwitcherChecked");
 	const themeSwitchHandler = (val: boolean) => {
-		val? setThemeValue("Dark") : setThemeValue("Light");
-		setChecked(val)
-		dispatch(changeColorTheme())
-	}
+		val
+			? setLocalStorageData("currentTheme", "Dark")
+			: setLocalStorageData("currentTheme", "Light");
+			setLocalStorageData("themeSwitcherChecked", JSON.stringify(val));
+		dispatch(changeColorTheme());
+	};
 
 	return (
 		<Switch
-			defaultChecked = {checked}
-			checkedChildren={themeValue}
-			unCheckedChildren={themeValue}
+			defaultChecked={Boolean(checked)}
+			checkedChildren={Boolean(checked) ? 'Dark' : 'Light'}
+			unCheckedChildren={!Boolean(checked) ? 'Light' : 'Dark'}
 			onChange={(val: boolean) => themeSwitchHandler(val)}
 		/>
 	);
