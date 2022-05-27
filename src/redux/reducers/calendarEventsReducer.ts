@@ -9,7 +9,7 @@ const initialState: CalendarInitialState = {
 	currentDate: getCurrentDate(),
 	currentCalendar: initialCalendar,
 	currentSelectedDate: "",
-	initialEvents: JSON.parse(dataInLocalStorage),
+	events: JSON.parse(dataInLocalStorage),
 	curentSelectedEventId: "",
 	currentCalendarView: "",
 };
@@ -20,7 +20,7 @@ const calendarEventsReducer = (
 ) => {
 	switch (action.type) {
 		case ActionType.PAGE_WAS_LOADED:
-			return state.initialEvents;
+			return state.events;
 
 		case ActionType.SET_DATE_TO_TODAY:
 			return {
@@ -48,27 +48,27 @@ const calendarEventsReducer = (
 		case ActionType.ADD_NEW_EVENT_TO_LIST:
 			return {
 				...state,
-				initialEvents: [...state.initialEvents || [], action.payload],
+				events: [...state.events || [], action.payload],
 			};
 		case ActionType.DELETE_CALENDAR_EVENT:
-			const deleteIndex = state.initialEvents.map(item => item.uniqueEventId).indexOf(+action.payload);
+			const deleteIndex = state.events.map(item => item.uniqueEventId).indexOf(action.payload);
 
 			return {
 				...state,
-				initialEvents: [
-					...state.initialEvents.slice(0, deleteIndex),
-					...state.initialEvents.slice(deleteIndex + 1)],
+				events: [
+					...state.events.slice(0, deleteIndex),
+					...state.events.slice(deleteIndex + 1)],
 			};
-		case ActionType.UPDATE_EVENTS_LIST:
-			const id = +action.payload.uniqueEventId;
+		case ActionType.UPDATE_EVENT_DATA:
+			const id = action.payload.uniqueEventId;
 			
-			const updateIndex = state.initialEvents.map(item => item.uniqueEventId).indexOf(id);
+			const updateIndex = state.events.map(item => item.uniqueEventId).indexOf(id);
 
 			return {
 				...state,
-				initialEvents: [
-					...state.initialEvents.slice(0, updateIndex), action.payload,
-					...state.initialEvents.slice(updateIndex + 1)],
+				events: [
+					...state.events.slice(0, updateIndex), action.payload,
+					...state.events.slice(updateIndex + 1)],
 			};
 	
 

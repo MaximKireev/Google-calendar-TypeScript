@@ -7,7 +7,7 @@ import {
 	setIsEventModalEditable,
 } from "../../../redux/selectors";
 import { makeEventDetailsModalEditable } from "../../../redux/actions/actionsUI";
-import { updateEventsList } from '../../../redux/actions/actionsCalendar'
+import { updateEventData } from '../../../redux/actions/actionsCalendar'
 import { useLocalStorageValue } from "../../../hooks/useLocalStorageValue";
 import { CalendarEventData } from "../../../ts-generalTypes/InitialStateInterfaces";
 import "./ShowEventDetails.css";
@@ -20,7 +20,7 @@ export const EventDetailsPopup = () => {
 
 	const [events, updateEventsInStorage] = useLocalStorageValue(undefined, "events");
 	const filteredEventData = events.filter(
-		(item: CalendarEventData) => item.uniqueEventId.toString() === id
+		(item: CalendarEventData) => item.uniqueEventId === id
 	);
 	const eventTitleValue = useInput(filteredEventData[0].title, false);
 	const eventDescriptionValue = useInput(
@@ -34,8 +34,8 @@ export const EventDetailsPopup = () => {
 			title: eventTitleValue.value,
 			description: eventDescriptionValue.value,
 		}
-		dispatch(updateEventsList(updatedEventObject));
-		const updateIndex = events.map((item: CalendarEventData) => item.uniqueEventId.toString()).indexOf(id);
+		dispatch(updateEventData(updatedEventObject));
+		const updateIndex = events.map((item: CalendarEventData) => item.uniqueEventId).indexOf(id);
 
 		updateEventsInStorage([
 			...events.slice(0, updateIndex), updatedEventObject,

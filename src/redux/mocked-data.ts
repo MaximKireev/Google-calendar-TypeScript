@@ -2,7 +2,7 @@ import { CalendarEventData } from "../ts-generalTypes/InitialStateInterfaces";
 
 export const mockedData: CalendarEventData[] = [
 	{
-		uniqueEventId: 441341341234,
+		uniqueEventId: "441341341234",
 		date: "1.5.2022",
 		title: "Some title",
 		timeFrom: "04.04.2022 13:55",
@@ -10,7 +10,7 @@ export const mockedData: CalendarEventData[] = [
 		description: "Lorem ipsum dolor sit amet consectetur adipisicing ",
 	},
 	{
-		uniqueEventId: 772457252582572,
+		uniqueEventId: "772457252582572",
 		date: "2.5.2022",
 		title: "Some title",
 		timeFrom: "04.04.2022 13:55",
@@ -18,7 +18,7 @@ export const mockedData: CalendarEventData[] = [
 		description: "Lorem ipsum dolor sit amet consectetur adipisicing ",
 	},
 	{
-		uniqueEventId: 24343146234235,
+		uniqueEventId: "24343146234235",
 		date: "4.5.2022",
 		title: "Some title",
 		timeFrom: "04.04.2022 13:55",
@@ -26,7 +26,7 @@ export const mockedData: CalendarEventData[] = [
 		description: "Lorem ipsum dolor sit amet consectetur adipisicing ",
 	},
 	{
-		uniqueEventId: 12121211121211,
+		uniqueEventId: "12121211121211",
 		date: "8.5.2022",
 		title: "Some title",
 		timeFrom: "04.04.2022 13:55",

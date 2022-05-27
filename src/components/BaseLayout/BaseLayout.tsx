@@ -11,7 +11,7 @@ import {
 
 } from "../../redux/selectors";
 import Calendar from "../MonthViewCalendar/MonthCalendar";
-import EventCreatorWindow from "../EventCreator/EventCreatorForm";
+import EventCreatorDialog from "../EventCreator/EventCreatorDialog";
 import { EventDetailsPopup } from "../EventDetailsModal/ShowEventDetails/ShowEventDetails";
 import { LoginWindow } from '../Header/LoginComponent/LoginWindow'
 
@@ -29,7 +29,7 @@ export const BaseLayout: React.FC = () => {
 			<div className="main-content">
 				{isSideBarVisible ? <Sidebar /> : null}
 				<Calendar size = 'large' />
-				{isEventCreatorWindowVisible ? <EventCreatorWindow /> : null}
+				{isEventCreatorWindowVisible ? <EventCreatorDialog /> : null}
 				{isEventModalVisible? <EventDetailsPopup /> : null}
 				{isLoginWindowVisible? <LoginWindow /> : null}
 			</div>

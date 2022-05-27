@@ -7,7 +7,7 @@ export const selectWeekDaysName = (state: RootReducer) =>  state.uiReducer.downl
 export const selectColorTheme = (state: RootReducer) =>  state.uiReducer.isDefaultTheme;
 export const selectIsEventModalVisible = (state: RootReducer) => state.uiReducer.isEventModalVisible;
 export const setIsEventModalEditable = (state: RootReducer) => state.uiReducer.isEventModalEditable;
-export const setListOfEventsInStorage = (state: RootReducer) => state.calendar.initialEvents;
+export const setListOfEventsInStorage = (state: RootReducer) => state.calendar.events;
 export const selectisLoginWindowVisible = (state: RootReducer) => state.uiReducer.isLoginWindowVisible;
 
 

@@ -58,8 +58,8 @@ export interface addNewEventToList {
 	type: ActionType.ADD_NEW_EVENT_TO_LIST,
 	payload: CalendarEventData
 }
-export interface updateEventsList {
-	type: ActionType.UPDATE_EVENTS_LIST,
+export interface updateEventData {
+	type: ActionType.UPDATE_EVENT_DATA,
 	payload: CalendarEventData
 }
 
@@ -77,4 +77,4 @@ export type CalendarEventAction =
 	| monthComponentWasLoadedAction
 	| setSelectedEventIdAction
 	| addNewEventToList
-	| updateEventsList
+	| updateEventData

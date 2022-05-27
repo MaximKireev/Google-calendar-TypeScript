@@ -5,10 +5,10 @@ export const CalendarViewChanger = () => {
     return (
         <>
           <Radio.Group >
-            <Radio.Button value="large">Year</Radio.Button>
-            <Radio.Button value="default">Month</Radio.Button>
-            <Radio.Button value="small">Day</Radio.Button>
-            <Radio.Button value="small">List</Radio.Button>
+            <Radio.Button value="Year">Year</Radio.Button>
+            <Radio.Button value="Month">Month</Radio.Button>
+            <Radio.Button value="Day">Day</Radio.Button>
+            <Radio.Button value="List" disabled>List</Radio.Button>
           </Radio.Group>
           </>
           )

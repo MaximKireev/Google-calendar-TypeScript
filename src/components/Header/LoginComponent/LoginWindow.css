@@ -26,13 +26,16 @@
 .close-btn {
 	cursor: pointer;
 	position: absolute;
-	top: -20px;
-	right: -10px;
+	top: -30px;
+	right: -50px;
+	width: 40px;
+	height: 40px;
 }
 .close-btn:before,
 .close-btn:after {
 	content: "";
 	position: absolute;
+	top: 20px;
 	width: 24px;
 	height: 2px;
 	background: rgb(12, 12, 12);

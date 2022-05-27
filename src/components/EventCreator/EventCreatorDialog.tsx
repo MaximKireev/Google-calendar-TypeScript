@@ -2,15 +2,16 @@ import React from "react";
 import Draggable from "react-draggable";
 import { TimePicker } from "antd";
 import { useDispatch, useSelector } from "react-redux";
+import uniqid from "uniqid";
 import "antd/dist/antd.css";
-import "./EventCreatorForm.css";
+import "./EventCreatorDialog.css";
 import { closeEventCreatorWindow } from "../../redux/actions/actionsUI";
 import { addNewEventToList } from "../../redux/actions/actionsCalendar";
 import { useLocalStorageValue } from "../../hooks/useLocalStorageValue";
 import { selectCurrentSelectedEventId } from "../../redux/selectors";
 import { useInput, useTextArea } from "../../hooks/useFormElements";
 
-const EventCreatorWindow = () => {
+const EventCreatorDialog = () => {
 	const dispatch = useDispatch();
 	const eventId = useSelector(selectCurrentSelectedEventId);
 	const [timeFrom, setTimeFrom] = React.useState("");
@@ -24,7 +25,7 @@ const EventCreatorWindow = () => {
 		"events"
 	);
 
-	const generatedUniqueEventId = Math.floor(Math.random() * 100000000);
+	const generatedUniqueEventId = uniqid();
 
 
 	const timeFromHandler = (item: any) => {
@@ -101,4 +102,4 @@ const EventCreatorWindow = () => {
 	);
 };
 
-export default EventCreatorWindow;
+export default EventCreatorDialog;

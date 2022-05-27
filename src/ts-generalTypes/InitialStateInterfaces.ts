@@ -1,6 +1,6 @@
 import {DayType} from '../ts-generalTypes/propTypes'
 export type CalendarEventData = {
-    uniqueEventId: number,
+    uniqueEventId: string,
     date?: string,
     title: string,
     timeFrom: string,
@@ -27,7 +27,7 @@ export interface CalendarInitialState {
         year: number},
     currentCalendar?: DayType[][],
     currentSelectedDate?: string,
-    initialEvents: CalendarEventData[],
+    events: CalendarEventData[],
     curentSelectedEventId?: string,
     currentCalendarView?: string,
 }
