@@ -7,7 +7,8 @@ import { CurrentDateHeader } from "../Header/CurrentDateHeader/CurrentDateHeader
 import { SetTodayHeader } from "./SetTodayHeader/SetTodayHeader";
 import { ProjectLogo } from "./ProjectLogo";
 import { SideMenuSwitcher } from "./SideMenuSwitcher";
-import { LoginIcon } from './LoginComponent/LoginIcon'
+import { LoginIcon } from './LoginComponent/LoginIcon';
+import { CalendarViewChanger } from './CalendarViewChanger/CalendarViewChanger'
 
 const Header: React.FC = () => {
 	return (
@@ -21,6 +22,7 @@ const Header: React.FC = () => {
 				<SetTodayHeader />
 				<CurrentDateHeader />
 				<div className="headerWriteSide-wrapper">
+					<CalendarViewChanger />
 					<ThemeSwitcher />
 					<LoginIcon />
 				</div>
