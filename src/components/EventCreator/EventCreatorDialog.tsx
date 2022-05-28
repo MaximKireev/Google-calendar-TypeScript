@@ -46,7 +46,7 @@ const EventCreatorDialog = () => {
 		};
 		dispatch(addNewEventToList(payload));
 
-		setLocalStorageData("events", JSON.stringify([...storageValue, payload]));
+		setLocalStorageData("events", JSON.stringify([...storageValue || [], payload]));
 
 		setTimeout(() => dispatch(closeEventCreatorWindow()), 10);
 	};

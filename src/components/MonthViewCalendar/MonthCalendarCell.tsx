@@ -36,12 +36,15 @@ export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
 		<div
 			onClick={clickOnCellHandler}
 			key={id}
-			className={!isCurrentMonth ? "day-cell prevOrNextStyle" : isToday? "day-cell today" : size === 'small' ? "day-cell small" : 'day-cell'}
+			className={size === 'small' ? "day-cell small" : !isCurrentMonth ? "day-cell prevOrNextStyle" : 
+			isToday? "day-cell today" : 
+			'day-cell'}
 		>
 			{day}
 
-			{listOfEventsThisDay.map((event: CalendarEventData) => (
-				<MonthCalendarEvent {...event} />
+			{size==='small' && listOfEventsThisDay.length > 0 ? <div className="calendar-small-events"></div>:
+			 listOfEventsThisDay.map((event: CalendarEventData) => (
+			<MonthCalendarEvent events = {event} size = {size}/>
 			))}
 		</div>
 	);

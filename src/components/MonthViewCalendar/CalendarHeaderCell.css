@@ -14,7 +14,7 @@
 }
 
 .prevOrNextStyle {
-	opacity: 0.4;
+	color: rgb(185, 183, 183);
 }
 .today {
 	box-shadow:0px 0px 0px 2px #7982EC inset;
@@ -27,3 +27,16 @@
 	overflow: hidden;
 	font-weight: 400;
 }
+.day-cell .small {
+	border: none;
+}
+
+.calendar-small-events{
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: rgb(243, 132, 201);
+	margin: 0 auto;
+}
+
+

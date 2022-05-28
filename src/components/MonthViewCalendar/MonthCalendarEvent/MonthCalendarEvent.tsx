@@ -5,17 +5,28 @@ import { CalendarEventData } from "../../../ts-generalTypes/InitialStateInterfac
 import { openEventModalPopup } from '../../../redux/actions/actionsUI'
 import { setSelectedEventId } from '../../../redux/actions/actionsCalendar'
 
-export const MonthCalendarEvent = (props: CalendarEventData) => {
+interface MonthCalendarEventProps {
+	events: CalendarEventData,
+	size?: string
+}
+
+export const MonthCalendarEvent = (props: MonthCalendarEventProps) => {
 	const dispatch = useDispatch()
 	const handleOnEventClick = () => {
 		dispatch(setSelectedEventId(`${uniqueEventId}`))
 		dispatch(openEventModalPopup())
 	}
-	const { uniqueEventId, description } = props;
+
+	const { uniqueEventId, description } = props.events;
 	return (
+
+		
 		<div id={`${uniqueEventId}`} className="monthEvent" 
 		onClick={handleOnEventClick}>
-			<p className="monthEvent-description">{description}</p>
+		<p className="monthEvent-description">{description}</p>
 		</div>
+	
+		
+		
 	);
 };
