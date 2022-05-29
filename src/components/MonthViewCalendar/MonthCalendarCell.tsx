@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import uniqid from "uniqid";
 import "./CalendarHeaderCell.css";
 import { DayType } from "../../ts-generalTypes/propTypes";
 import { MonthCalendarEvent } from "./MonthCalendarEvent/MonthCalendarEvent";
@@ -29,13 +30,13 @@ export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
 			dispatch(openEventCreatorWindow());
 		}
 	};
-
+let unniqueKey = uniqid()
 
 
 	return (
 		<div
 			onClick={clickOnCellHandler}
-			key={id}
+			key={unniqueKey}
 			className={size === 'small' ? "day-cell small" : !isCurrentMonth ? "day-cell prevOrNextStyle" : 
 			isToday? "day-cell today" : 
 			'day-cell'}

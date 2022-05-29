@@ -1,14 +1,24 @@
 import React from 'react'
-import { Button, Radio } from 'antd';
+import { Radio, RadioChangeEvent } from 'antd';
+import { useDispatch } from 'react-redux';
+import { changeCalendarView } from '../../../redux/actions/actionsUI'
 
 export const CalendarViewChanger = () => {
+  const dispatch = useDispatch()
+
+  const changeViewHandler = (e:RadioChangeEvent) => {
+    dispatch(changeCalendarView(e.target.id!))
+  }
     return (
         <>
-          <Radio.Group >
-            <Radio.Button value="Year">Year</Radio.Button>
-            <Radio.Button value="Month">Month</Radio.Button>
-            <Radio.Button value="Day">Day</Radio.Button>
-            <Radio.Button value="List" disabled>List</Radio.Button>
+          <Radio.Group 
+          onChange={changeViewHandler}
+          defaultValue="Month"
+          >
+            <Radio.Button value="Year" id = 'year'>Year</Radio.Button>
+            <Radio.Button value="Month" id = 'month'>Month</Radio.Button>
+            <Radio.Button value="Day" disabled id = 'day'>Day</Radio.Button>
+            <Radio.Button value="List" disabled id = 'list'>List</Radio.Button>
           </Radio.Group>
           </>
           )

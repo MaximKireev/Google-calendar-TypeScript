@@ -4,6 +4,7 @@ import { CalendarInitialState } from "../../ts-generalTypes/InitialStateInterfac
 import { CalendarEventAction } from "../../ts-generalTypes/calendarActionInterfaces";
 import { ActionType } from "../ActionTypesConstants";
 import { getLocalStorageData } from '../../helpers/local-storage-utils'
+
 const initialCalendar = createCalendarMatrix();
 const dataInLocalStorage = getLocalStorageData('events')!
 const initialState: CalendarInitialState = {

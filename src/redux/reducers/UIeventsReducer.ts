@@ -15,6 +15,7 @@ const initialState: UIinitialState = {
 	mouseCoordinates: { x: 0, y: 0 },
 	downloadWeekDaysName: days,
 	isDefaultTheme: defaultThemeinStorage,
+	currentCalendarView: 'month'
 };
 
 const UIComponentsreducer = (
@@ -74,6 +75,11 @@ const UIComponentsreducer = (
 			return {
 				...state,
 				isEventModalEditable: !state.isEventModalEditable,
+			};
+		case ActionType.CHANGE_CALENDAR_VIEW:
+			return {
+				...state,
+				currentCalendarView: action.payload,
 			};
 		default:
 			return state;

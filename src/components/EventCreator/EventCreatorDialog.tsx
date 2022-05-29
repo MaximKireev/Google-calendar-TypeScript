@@ -22,7 +22,7 @@ const EventCreatorDialog = () => {
 	const inputValue = useInput("", true);
 	const textAreaValue = useTextArea("", true);
 
-	const storageValue = getLocalStorageData("events");
+	const storageValue = getLocalStorageData("events")  || [];
 
 	const generatedUniqueEventId = uniqid();
 
@@ -36,6 +36,8 @@ const EventCreatorDialog = () => {
 	};
 	const hadleFormData = (e: React.SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
+		
+					
 		const payload = {
 			uniqueEventId: generatedUniqueEventId,
 			date: eventId,
@@ -46,7 +48,7 @@ const EventCreatorDialog = () => {
 		};
 		dispatch(addNewEventToList(payload));
 
-		setLocalStorageData("events", JSON.stringify([...storageValue || [], payload]));
+		setLocalStorageData("events", JSON.stringify([...storageValue, payload]));
 
 		setTimeout(() => dispatch(closeEventCreatorWindow()), 10);
 	};

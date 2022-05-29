@@ -17,6 +17,7 @@ export interface UIinitialState {
     downloadWeekDaysName: { day: string, id: number }[],
     isDefaultTheme: boolean,
     isLoginWindowVisible: boolean,
+    currentCalendarView: 'year' | 'month' | 'day' | 'list',
 }
 
 export interface CalendarInitialState {

@@ -11,16 +11,17 @@ import { MonthCalendarCell } from "./MonthCalendarCell";
 import { DayType } from "../../ts-generalTypes/propTypes";
 
 interface MonthCalendaProps {
-size: string
+size: string,
+calendarMatrix?: DayType[][]
 }
 
-const Calendar = ({size}: MonthCalendaProps) => {
+const Calendar = ({size, calendarMatrix}: MonthCalendaProps) => {
 	const weekDaysName = useSelector(selectWeekDaysName);
-	const currentCalendar = useSelector(selectCurrentCalendar)!;
+	const currentCalendar = calendarMatrix? calendarMatrix : useSelector(selectCurrentCalendar)!;
 	
 
 	const renderCalendarWeek = (week: DayType[]) => (
-		<div className="week-wrapper">
+		<div key = {Math.random()*1000} className="week-wrapper">
 			{week.map(({ id, day, isCurrentMonth, isToday }: DayType) => (
 				<MonthCalendarCell
 					key={id}
@@ -37,7 +38,7 @@ const Calendar = ({size}: MonthCalendaProps) => {
 	return (
 		<div className="month-wrapper">
 			<ErrorBoundary>
-				<div className="week-wrapper">
+				<div key = {0} className="week-wrapper">
 					{weekDaysName.map(({ id, day }) => (
 						<CalendarHeaderCell key={id} id={id} day={day} size = {size}/>
 					))}

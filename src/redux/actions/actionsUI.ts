@@ -2,7 +2,6 @@ import { ActionType } from "../ActionTypesConstants";
 
 export const toggleMenu = () => ({ type: ActionType.SHOW_HIDE_SIDEBAR });
 
-
 export const openEventCreatorWindow = () => ({
 	type: ActionType.OPEN_EVENT_CREATOR_WINDOW,
 });
@@ -38,5 +37,12 @@ export const showLoginWindow = () => ({
 export const hideLoginWindow = () => ({
 	type: ActionType.HIDE_LOGIN_WINDOW,
 });
+
+export const changeCalendarView = (view: string) => ({
+	type: ActionType.CHANGE_CALENDAR_VIEW,
+	payload: view
+});
+
+
 
 

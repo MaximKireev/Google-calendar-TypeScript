@@ -9,7 +9,8 @@ export const selectIsEventModalVisible = (state: RootReducer) => state.uiReducer
 export const setIsEventModalEditable = (state: RootReducer) => state.uiReducer.isEventModalEditable;
 export const setListOfEventsInStorage = (state: RootReducer) => state.calendar.events;
 export const selectisLoginWindowVisible = (state: RootReducer) => state.uiReducer.isLoginWindowVisible;
-
+export const selectCurrentCalendarView = (state: RootReducer) => state.uiReducer.currentCalendarView;
+export const selectCurrentDate = (state: RootReducer) => state.calendar.currentDate;
 
 
 // export const selectEvents = (state: RootReducer) => state.calendar.events
