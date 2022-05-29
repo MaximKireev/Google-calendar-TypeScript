@@ -61,7 +61,7 @@ const EventCreatorDialog = () => {
 			}}
 		>
 			<form onSubmit={hadleFormData} className="event-wrapper">
-				<span className="event-data"></span>
+				<span className="event-data">{eventId}</span>
 				<input className="task-input" {...inputValue} />
 				{inputValue.error && (
 					<span style={{ color: "red" }}>{inputValue.error}</span>

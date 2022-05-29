@@ -34,7 +34,7 @@ export const createCalendarMatrix = (date = new Date(), monthChange = 0, default
 
 				matrix[row][col] = {
 					day: daysInMonth[prevMonth] - firstDayOfMonth + counterBefore,
-					id: `${counterBefore}.${month}.${year}`,
+					id: `${daysInMonth[prevMonth] - firstDayOfMonth + counterBefore}.${month}.${year}`,
 					cell: true,
 					isToday: 
 					counter === date.getDate() && 

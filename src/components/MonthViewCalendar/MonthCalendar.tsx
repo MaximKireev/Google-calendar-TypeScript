@@ -19,7 +19,7 @@ const Calendar = ({size, calendarMatrix}: MonthCalendaProps) => {
 	const weekDaysName = useSelector(selectWeekDaysName);
 	const currentCalendar = calendarMatrix? calendarMatrix : useSelector(selectCurrentCalendar)!;
 	
-
+console.log(currentCalendar)
 	const renderCalendarWeek = (week: DayType[]) => (
 		<div key = {Math.random()*1000} className="week-wrapper">
 			{week.map(({ id, day, isCurrentMonth, isToday }: DayType) => (
