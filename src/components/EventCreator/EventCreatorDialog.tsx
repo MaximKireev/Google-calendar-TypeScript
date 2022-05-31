@@ -3,6 +3,7 @@ import Draggable from "react-draggable";
 import { TimePicker } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import uniqid from "uniqid";
+import moment from "moment";
 import "antd/dist/antd.css";
 import { toast } from "react-toastify";
 import "./EventCreatorDialog.css";
@@ -13,13 +14,16 @@ import {
 	setLocalStorageData,
 } from "../../helpers/local-storage-utils";
 import { selectCurrentSelectedEventId } from "../../redux/selectors";
-import { useInput, useTextArea } from "../../hooks/useFormElements";
+import { useInput } from "../../hooks/useInput";
+import { useTextArea } from '../../hooks/useTextArea'
+import { useTimePicker } from '../../hooks/useTimePicker'
+
 
 const EventCreatorDialog = () => {
 	const dispatch = useDispatch();
 	const eventId = useSelector(selectCurrentSelectedEventId);
-	const [timeFrom, setTimeFrom] = React.useState("");
-	const [timeTo, setTimeTo] = React.useState("");
+	const timePickerFromObj = useTimePicker('', true);
+	const timePickerToObj = useTimePicker('', true)
 	const inputValue = useInput("", true);
 	const textAreaValue = useTextArea("", true);
 
@@ -27,14 +31,6 @@ const EventCreatorDialog = () => {
 
 	const generatedUniqueEventId = uniqid();
 
-	const timeFromHandler = (item: any) => {
-		let date = new Date(item._d);
-		setTimeFrom(`${date.getHours()}:${date.getMinutes()}`);
-	};
-	const timeToHandler = (item: any) => {
-		let date = new Date(item._d);
-		setTimeTo(`${date.getHours()}:${date.getMinutes()}`);
-	};
 	const hadleFormData = (e: React.SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
 		
@@ -43,8 +39,8 @@ const EventCreatorDialog = () => {
 			uniqueEventId: generatedUniqueEventId,
 			date: eventId,
 			title: inputValue.value!,
-			timeFrom: timeFrom,
-			timeTo: timeTo,
+			timeFrom: timePickerFromObj.timeOption,
+			timeTo: timePickerToObj.timeOption,
 			description: textAreaValue.value!,
 		};
 		dispatch(addNewEventToList(payload));
@@ -76,13 +72,15 @@ const EventCreatorDialog = () => {
 					className="selectTime-wrapper"
 				>
 					<TimePicker
+						defaultValue={moment()}
 						format="HH:mm"
-						onSelect={(item) => timeFromHandler(item)}
 						minuteStep={15}
+						{...timePickerFromObj}
 					/>
 					<TimePicker
+						defaultValue={moment().add(15, 'minutes')}
 						format="HH:mm"
-						onSelect={(item) => timeToHandler(item)}
+						{...timePickerToObj}
 						minuteStep={15}
 					/>
 				</div>

@@ -1,3 +1,10 @@
+.event-duration {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.datePicker {
+justify-content: left}
 .event-title, .event-description, .event-duration {
     width: 80%;
     outline: none;

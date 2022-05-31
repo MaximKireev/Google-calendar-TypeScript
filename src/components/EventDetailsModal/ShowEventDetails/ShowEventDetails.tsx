@@ -1,6 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button } from "antd";
+import { Button, TimePicker, DatePicker } from "antd";
+import type { DatePickerProps } from 'antd';
+import moment from "moment";
+import {toast} from 'react-toastify'
 import { EventDetailsModalLayout } from "../EventDetailsModalLayout";
 import {
   selectCurrentSelectedEventId,
@@ -10,7 +13,9 @@ import { makeEventDetailsModalEditable } from "../../../redux/actions/actionsUI"
 import { updateEventData } from "../../../redux/actions/actionsCalendar";
 import { CalendarEventData } from "../../../ts-generalTypes/InitialStateInterfaces";
 import "./ShowEventDetails.css";
-import { useInput } from "../../../hooks/useFormElements";
+import { useInput } from "../../../hooks/useInput";
+import { useTimePicker } from "../../../hooks/useTimePicker";
+
 import {
   getLocalStorageData,
   setLocalStorageData,
@@ -25,18 +30,23 @@ export const EventDetailsPopup = () => {
   const filteredEventData = events.filter(
     (item: CalendarEventData) => item.uniqueEventId === id
   );
-  console.log(filteredEventData);
+  console.log(filteredEventData)
   const eventTitleValue = useInput(filteredEventData[0].title, false);
   const eventDescriptionValue = useInput(
     filteredEventData[0].description,
     false
   );
+  const timeFrom = useTimePicker(filteredEventData[0].timeFrom, false);
+  const timeTo = useTimePicker(filteredEventData[0].timeTo, false)
+
 
   const updateEventHandler = () => {
     const updatedEventObject = {
       ...filteredEventData[0],
       title: eventTitleValue.value,
       description: eventDescriptionValue.value,
+      timeFrom: timeFrom.timeOption,
+      timeTo: timeTo.timeOption
     };
     dispatch(updateEventData(updatedEventObject));
     const updateIndex = events
@@ -51,6 +61,11 @@ export const EventDetailsPopup = () => {
         ...events.slice(updateIndex + 1),
       ])
     );
+
+    toast.success("Event succefully updated!", {
+			position: toast.POSITION.TOP_CENTER,
+			autoClose: 2000, 
+		  });
   };
   return (
     <EventDetailsModalLayout>
@@ -59,10 +74,30 @@ export const EventDetailsPopup = () => {
         disabled={!isEventModalEditable}
         {...eventTitleValue}
       />
-      <p
-        className="event-duration"
-        contentEditable={isEventModalEditable}
-      >{`${filteredEventData[0].timeFrom} - ${filteredEventData[0].timeTo}`}</p>
+      <div
+					className="event-duration"
+				>
+					<TimePicker
+            defaultValue={moment(timeFrom.timeOption, 'HH:mm')}
+            disabled={!isEventModalEditable}
+						format="HH:mm"
+						minuteStep={15}
+						{...timeFrom}
+					/>
+					<TimePicker
+            defaultValue={moment(timeTo.timeOption, 'HH:mm')}
+            disabled={!isEventModalEditable}
+						format="HH:mm"
+						{...timeTo}
+						minuteStep={15}
+					/>
+          <DatePicker
+          format = 'dd.mm.yyyy'
+          disabled={!isEventModalEditable}
+          defaultValue={moment(filteredEventData.date, 'dd.mm.yyyy')}
+          className="datePicker"/>
+
+				</div>
       <input
         {...eventDescriptionValue}
         className="event-description"
