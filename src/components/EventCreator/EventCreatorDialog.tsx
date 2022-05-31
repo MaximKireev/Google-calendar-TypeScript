@@ -4,6 +4,7 @@ import { TimePicker } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import uniqid from "uniqid";
 import "antd/dist/antd.css";
+import { toast } from "react-toastify";
 import "./EventCreatorDialog.css";
 import { closeEventCreatorWindow } from "../../redux/actions/actionsUI";
 import { addNewEventToList } from "../../redux/actions/actionsCalendar";
@@ -49,7 +50,10 @@ const EventCreatorDialog = () => {
 		dispatch(addNewEventToList(payload));
 
 		setLocalStorageData("events", JSON.stringify([...storageValue, payload]));
-
+		toast.success("Event succefully created!", {
+			position: toast.POSITION.TOP_CENTER,
+			autoClose: 2000, 
+		  });
 		setTimeout(() => dispatch(closeEventCreatorWindow()), 10);
 	};
 
