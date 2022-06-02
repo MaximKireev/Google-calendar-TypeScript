@@ -1,0 +1,38 @@
+.quarter-of-an-hour{
+    height: 10px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+  
+  
+  }
+  .quarter-of-an-hour:hover{
+    border: 1px solid rgb(217, 220, 224);
+  
+  }
+  
+  .hour-cell-wrapper{
+      width: 100%;
+            border: 1px solid lightgray;
+            height: 40px;
+            text-align: left;
+            font-size: 10px;
+            margin: 0 0 0 50px;
+            cursor: pointer;
+  }
+  .hour-cell-wrapper:hover{
+    border: 1px solid rgb(42, 110, 199);
+  }
+  .time{
+    display: inline;
+    position: absolute;
+    padding: 0;
+    margin-left: -30px;
+  }
+  .event-in-day-view {
+    margin-left: 50px;
+    width: 60%;
+    background-color: black;
+    color: white;
+  }
+    
