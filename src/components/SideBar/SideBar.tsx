@@ -5,7 +5,8 @@ import Calendar from '../MonthViewCalendar/MonthCalendar'
 
 export const Sidebar: React.FC = () => {
 	return (
-		<div className="sidebar-wrapper">
+		<div className="sidebar-wrapper"
+		>
 			<ErrorBoundary>
 				<Calendar size = 'small'/>
 			</ErrorBoundary>

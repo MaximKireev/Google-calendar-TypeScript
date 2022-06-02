@@ -1,13 +1,14 @@
 import React from "react";
 interface EventInDayViewProps {
-    top: number
-    height: number
+  top: number;
+  height: number;
+  description: string;
 }
 
-export const EventInDayView  = ({top, height}: EventInDayViewProps) => {
-    return <div
-    style = {{top, height}}
-    className="event-in-day-view">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim architecto quam dolor accusantium, laborum itaque, iure ad dignissimos velit aut quos est magnam laudantium nesciunt beatae assumenda, fugit dolorum voluptate?
-            </div>
-}
+export const EventInDayView = ({ top, height, description }: EventInDayViewProps) => {
+  return (
+    <div style={{ top, height }} className="event-in-day-view">
+      {description}
+    </div>
+  );
+};
