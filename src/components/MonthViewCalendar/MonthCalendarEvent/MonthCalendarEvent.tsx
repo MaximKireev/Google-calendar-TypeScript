@@ -21,7 +21,8 @@ export const MonthCalendarEvent = (props: MonthCalendarEventProps) => {
 	return (
 
 		
-		<div id={`${uniqueEventId}`} className="monthEvent" 
+		<div id={`${uniqueEventId}`} 
+		className="monthEvent" 
 		onClick={handleOnEventClick}>
 		<p className="monthEvent-description">{description}</p>
 		</div>

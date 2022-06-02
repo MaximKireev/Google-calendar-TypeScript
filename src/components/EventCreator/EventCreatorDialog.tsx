@@ -22,8 +22,8 @@ import { useTimePicker } from '../../hooks/useTimePicker'
 const EventCreatorDialog = () => {
 	const dispatch = useDispatch();
 	const eventId = useSelector(selectCurrentSelectedEventId);
-	const timePickerFromObj = useTimePicker('', true);
-	const timePickerToObj = useTimePicker('', true)
+	const timePickerFromObj = useTimePicker(moment(), true);
+	const timePickerToObj = useTimePicker(moment().add(15, 'minutes'), true)
 	const inputValue = useInput("", true);
 	const textAreaValue = useTextArea("", true);
 

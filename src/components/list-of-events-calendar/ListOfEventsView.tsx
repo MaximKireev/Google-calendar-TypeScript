@@ -25,11 +25,11 @@ export const ListOfEventsView = () => {
 	const keys = Object.keys(listOfEvents);
 
 	return (
-		<Collapse style={{ width: "100%" }} defaultActiveKey={["1"]}>
+		<Collapse style={{ width: "100%", backgroundColor: 'inherit'}} defaultActiveKey={["1"]}>
             {keys.map(item => 
                 <Panel header={item} key="1">
-                    <div style={{display: 'flex', flexDirection: 'column'}} className="wrapper">
-				{listOfEvents[item].map(val => <Badge status="success" text= {val.description} />)}
+                    <div style={{display: 'flex', flexDirection: 'column', color: 'inherit', backgroundColor: 'inherit' }} className="wrapper">
+				{listOfEvents[item].map(val => <Badge status="success" style = {{color: 'inherit', backgroundColor: 'transparent'}} text= {val.description} />)}
 			        </div>
                 </Panel>
                 
