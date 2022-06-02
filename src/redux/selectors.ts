@@ -11,16 +11,5 @@ export const setListOfEventsInStorage = (state: RootReducer) => state.calendar.e
 export const selectisLoginWindowVisible = (state: RootReducer) => state.uiReducer.isLoginWindowVisible;
 export const selectCurrentCalendarView = (state: RootReducer) => state.uiReducer.currentCalendarView;
 export const selectCurrentDate = (state: RootReducer) => state.calendar.currentDate;
+export const selectCurrentSelectedDate = (state: RootReducer) => state.calendar.currentSelectedDate;
 
-
-// export const selectEvents = (state: RootReducer) => state.calendar.events
-// export const selectEventsMap = createSelector( // from reselect
-//     selectEvents,
-//     (events) => (
-//         events.reduce((acc, event) => (
-//             const eventDay = ...;
-//             const dayEvents = acc[eventDay] || [];
-//             return {...access, [eventDay]: [...dayEvents, event]]}
-//         ), {})
-//     )
-// );

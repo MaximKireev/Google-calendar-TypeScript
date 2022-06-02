@@ -16,6 +16,7 @@ import EventCreatorDialog from "../EventCreator/EventCreatorDialog";
 import { EventDetailsPopup } from "../EventDetailsModal/ShowEventDetails/ShowEventDetails";
 import { LoginWindow } from "../Header/LoginComponent/LoginWindow";
 import { ListOfEventsView } from '../../components/list-of-events-calendar/ListOfEventsView'
+import { DayViewCalendar } from '../../components/day-view-calendar/DayViewCalendar'
 
 export const BaseLayout: React.FC = () => {
   const isSideBarVisible = useSelector(selectIsSideBarVisible);
@@ -43,10 +44,12 @@ export const BaseLayout: React.FC = () => {
 
 const returnCalendarView = (view: string) => {
 	switch(view){
+		case 'month':
+			return <Calendar size = 'large' />;
 		case 'year':
 			return <YearViewCalendar/>;
 		case 'day':
-			return true;
+			return <DayViewCalendar />;
 		case 'list':
 			return <ListOfEventsView />;
 		default: 

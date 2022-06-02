@@ -4,8 +4,8 @@ import uniqid from "uniqid";
 import "./CalendarHeaderCell.css";
 import { DayType } from "../../ts-generalTypes/propTypes";
 import { MonthCalendarEvent } from "./MonthCalendarEvent/MonthCalendarEvent";
-import { openEventCreatorWindow } from "../../redux/actions/actionsUI";
-import { setSelectedEventId } from "../../redux/actions/actionsCalendar";
+import { openEventCreatorWindow, changeCalendarView } from "../../redux/actions/actionsUI";
+import { setSelectedEventId, setSelectedDate } from "../../redux/actions/actionsCalendar";
 import { CalendarEventData } from "../../ts-generalTypes/InitialStateInterfaces";
 import { setListOfEventsInStorage } from '../../redux/selectors'
 
@@ -22,6 +22,10 @@ export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
 	);
 	const clickOnCellHandler = (event: React.MouseEvent) => {
 		const currentTarget = event.target as HTMLDivElement;
+		if(currentTarget.className.includes ("badge")){
+			dispatch(changeCalendarView('day'))
+			dispatch(setSelectedDate(id))
+		}
 
 		if (!currentTarget.className.includes("day-cell")) {
 			return;
@@ -37,12 +41,12 @@ let unniqueKey = uniqid()
 		<div
 			onClick={clickOnCellHandler}
 			key={unniqueKey}
-			className={size === 'small' ? "day-cell small" : !isCurrentMonth ? "day-cell prevOrNextStyle" : 
-			isToday? "day-cell today" : 
+			className={size === 'small' ? "day-cell small" : !isCurrentMonth ? "day-cell prevOrNextStyle" :
 			'day-cell'}
 		>
-			{day}
-
+		<div  
+		className="badge"
+		style={{backgroundColor: isToday? '#7982EC' : 'white', color:  isToday? 'white' : 'black'}}>{day}</div>	
 			{size==='small' && listOfEventsThisDay.length > 0 ? <div className="calendar-small-events"></div>:
 			 listOfEventsThisDay.map((event: CalendarEventData) => (
 			<MonthCalendarEvent events = {event} size = {size}/>

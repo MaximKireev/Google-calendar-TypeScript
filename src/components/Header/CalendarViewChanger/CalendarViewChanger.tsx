@@ -13,11 +13,10 @@ export const CalendarViewChanger = () => {
         <>
           <Radio.Group 
           onChange={changeViewHandler}
-          defaultValue="Month"
           >
             <Radio.Button value="Year" id = 'year'>Year</Radio.Button>
             <Radio.Button value="Month" id = 'month'>Month</Radio.Button>
-            <Radio.Button value="Day" disabled id = 'day'>Day</Radio.Button>
+            <Radio.Button value="Day" id = 'day'>Day</Radio.Button>
             <Radio.Button value="List" id = 'list'>List</Radio.Button>
           </Radio.Group>
           </>

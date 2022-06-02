@@ -72,8 +72,12 @@ const calendarEventsReducer = (
 					...state.events.slice(0, updateIndex), action.payload,
 					...state.events.slice(updateIndex + 1)],
 			};
+		case ActionType.SET_SELECTED_DATE:
+			return {
+				...state,
+				currentSelectedDate: action.payload,
+			};
 	
-
 		default:
 			return state;
 	}
