@@ -1,16 +1,33 @@
 .year-view-calendar {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    width: 100%;
-    box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	width: 100%;
 }
-.month-in-year-wrapper{
-    width: calc(100%/4);
-    font-size: .8em;
-    padding: 20px;
+.month-in-year-wrapper {
+	width: calc(100% / 4);
+	font-size: 0.8em;
+	padding: 20px;
 }
 
 h3 {
-    margin: 0;
+	margin: 0;
 }
+
+
+  @media screen and (min-width: 850px) and (max-width: 1024px) {
+    .month-in-year-wrapper  {
+        width: calc(100% / 3);
+    }
+  }
+  @media screen and (min-width: 550px) and (max-width: 849px){
+    .month-in-year-wrapper  {
+        width: calc(100% / 2);
+    }
+  }
+  @media screen and (max-width: 549px) {
+    .month-in-year-wrapper  {
+        width: 100%;
+       flex-wrap: wrap    }
+  }
+

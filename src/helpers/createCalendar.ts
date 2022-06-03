@@ -34,7 +34,7 @@ export const createCalendarMatrix = (date = new Date(), monthChange = 0, default
 
 				matrix[row][col] = {
 					day: daysInMonth[prevMonth] - firstDayOfMonth + counterBefore,
-					id: `${daysInMonth[prevMonth] - firstDayOfMonth + counterBefore}.${month}.${year}`,
+					id: `${year}-${month}-${daysInMonth[prevMonth] - firstDayOfMonth + counterBefore}`,
 					cell: true,
 					isToday: 
 					counter === date.getDate() && 
@@ -48,7 +48,7 @@ export const createCalendarMatrix = (date = new Date(), monthChange = 0, default
 
 				matrix[row][col] = {
 					day: counter,
-					id: `${counter}.${month + 1}.${year}`,
+					id: `${year}-${month + 1}-${counter}`,
 					cell: true,
 					isCurrentMonth: true,
 					isToday: counter === date.getDate() && 
@@ -61,7 +61,7 @@ export const createCalendarMatrix = (date = new Date(), monthChange = 0, default
 			if (row > 0 && counter <= numOfDays) {
 				matrix[row][col] = {
 					day: counter,
-					id: `${counter}.${month + 1}.${year}`,
+					id: `${year}-${month + 1}-${counter}`,
 					cell: true,
 					isCurrentMonth: true,
 					isToday: counter === date.getDate() && 
@@ -72,7 +72,7 @@ export const createCalendarMatrix = (date = new Date(), monthChange = 0, default
 			} else if (row > 0 && counter > numOfDays) {
 				matrix[row][col] = {
 					day: counterAfter,
-					id: `${counterAfter}.${month + 2}.${year}`,
+					id: `${year}-${month + 2}-${counterAfter}`,
 					cell: true,
 				};
 				counterAfter++;

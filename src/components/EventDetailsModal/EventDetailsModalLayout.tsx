@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
+
 import { CloseOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import {
 	closeEventModalPopup,

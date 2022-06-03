@@ -36,7 +36,7 @@ export const EventDetailsPopup = () => {
     false
   );
   const timeFrom = useTimePicker(filteredEventData[0].timeFrom, false);
-  const timeTo = useTimePicker(filteredEventData[0].timeTo, false)
+  const timeTo = useTimePicker(filteredEventData[0].timeTo, false);
 
 
   const updateEventHandler = () => {
@@ -93,7 +93,7 @@ export const EventDetailsPopup = () => {
           <DatePicker
           format = 'dd.mm.yyyy'
           disabled={!isEventModalEditable}
-          defaultValue={moment(filteredEventData.date, 'dd.mm.yyyy')}
+          defaultPickerValue={moment(filteredEventData[0].date)}
           className="datePicker"/>
 
 				</div>

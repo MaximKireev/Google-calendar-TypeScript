@@ -6,11 +6,11 @@ import { selectCurrentCalendar } from "../../../redux/selectors";
 export const CurrentDateHeader = () => {
 	const currentCalendar = useSelector(selectCurrentCalendar)!;
 	const searchValue: string = currentCalendar[1][1].id;
-	const parcedSearchValue: string[] = searchValue.split(".");
+	const parcedSearchValue: string[] = searchValue.split("-");
 	let date: Date = new Date(
-		+parcedSearchValue[2],
-		+parcedSearchValue[1] - 1,
-		+parcedSearchValue[0]
+		+parcedSearchValue[0],
+		+parcedSearchValue[1]-1,
+		+parcedSearchValue[2]
 	);
 	return (
 		<div className="currentDate-wrapper">

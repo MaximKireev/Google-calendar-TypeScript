@@ -15,6 +15,8 @@ export const DayViewCalendar = () => {
     (event) => event.date === currentSelectedDate
   );
 
+  console.log(listOfEventsThisDay)
+
   const [eventsWithCoordinates, seteventsWithCoordinates] =
     React.useState<{}[]>([]);
 
@@ -38,7 +40,7 @@ export const DayViewCalendar = () => {
       seteventsWithCoordinates(newArr);
 
     })} 
-  }, []);
+  }, [currentSelectedDate]);
 
   return (
     <div className="day-view-wrapper" style={{ width: "100%" }}>

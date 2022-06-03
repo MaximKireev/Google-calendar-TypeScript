@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import uniqid from "uniqid";
 import "antd/dist/antd.css";
 import { toast } from "react-toastify";
+import moment from 'moment';
 import "./EventCreatorDialog.css";
 import { closeEventCreatorWindow } from "../../redux/actions/actionsUI";
 import { addNewEventToList } from "../../redux/actions/actionsCalendar";
@@ -31,6 +32,15 @@ const EventCreatorDialog = () => {
 
 	const hadleFormData = (e: React.SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
+		
+		let f: any = moment(timePickerFromObj.timeOption, 'HH:mm')
+		let t: any = moment(timePickerToObj.timeOption, "HH:mm");
+		if( f._d > t._d ){
+			toast.error("Date From should be greater than date To!", {
+				position: toast.POSITION.TOP_CENTER,
+				autoClose: 1500,
+			});
+			return}
 
 		const payload = {
 			uniqueEventId: generatedUniqueEventId,
