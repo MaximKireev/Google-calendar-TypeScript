@@ -8,7 +8,7 @@ export const useTimePicker = (initialValue: any, required: boolean) => {
 
 
 	const timeHandler = (item: string ) => {
-		setTimeValue(`${new Date(item).getHours()}:${new Date(item).getMinutes()}`);
+		setTimeValue(`${("0" + new Date(item).getHours()).slice(-2)}:${(new Date(item).getMinutes()<10? new Date(item).getMinutes() + "0" : new Date(item).getMinutes())}`);
         if (item === '' && required) setError("Required field");
       else setError(null);
 	};

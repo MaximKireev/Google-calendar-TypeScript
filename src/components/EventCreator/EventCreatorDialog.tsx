@@ -3,7 +3,6 @@ import Draggable from "react-draggable";
 import { TimePicker } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import uniqid from "uniqid";
-import moment from "moment";
 import "antd/dist/antd.css";
 import { toast } from "react-toastify";
 import "./EventCreatorDialog.css";
@@ -15,26 +14,24 @@ import {
 } from "../../helpers/local-storage-utils";
 import { selectCurrentSelectedEventId } from "../../redux/selectors";
 import { useInput } from "../../hooks/useInput";
-import { useTextArea } from '../../hooks/useTextArea'
-import { useTimePicker } from '../../hooks/useTimePicker'
-
+import { useTextArea } from "../../hooks/useTextArea";
+import { useTimePicker } from "../../hooks/useTimePicker";
 
 const EventCreatorDialog = () => {
 	const dispatch = useDispatch();
 	const eventId = useSelector(selectCurrentSelectedEventId);
-	const timePickerFromObj = useTimePicker(moment(), true);
-	const timePickerToObj = useTimePicker(moment().add(15, 'minutes'), true)
+	const timePickerFromObj = useTimePicker("", true);
+	const timePickerToObj = useTimePicker("", true);
 	const inputValue = useInput("", true);
 	const textAreaValue = useTextArea("", true);
 
-	const storageValue = getLocalStorageData("events")  || [];
+	const storageValue = getLocalStorageData("events") || [];
 
 	const generatedUniqueEventId = uniqid();
 
 	const hadleFormData = (e: React.SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
-		
-					
+
 		const payload = {
 			uniqueEventId: generatedUniqueEventId,
 			date: eventId,
@@ -48,8 +45,8 @@ const EventCreatorDialog = () => {
 		setLocalStorageData("events", JSON.stringify([...storageValue, payload]));
 		toast.success("Event succefully created!", {
 			position: toast.POSITION.TOP_CENTER,
-			autoClose: 2000, 
-		  });
+			autoClose: 2000,
+		});
 		setTimeout(() => dispatch(closeEventCreatorWindow()), 10);
 	};
 
@@ -71,18 +68,8 @@ const EventCreatorDialog = () => {
 					style={{ display: "flex", justifyContent: "space-between" }}
 					className="selectTime-wrapper"
 				>
-					<TimePicker
-						defaultValue={moment()}
-						format="HH:mm"
-						minuteStep={15}
-						{...timePickerFromObj}
-					/>
-					<TimePicker
-						defaultValue={moment().add(15, 'minutes')}
-						format="HH:mm"
-						{...timePickerToObj}
-						minuteStep={15}
-					/>
+					<TimePicker format="HH:mm" minuteStep={15} {...timePickerFromObj} />
+					<TimePicker format="HH:mm" {...timePickerToObj} minuteStep={15} />
 				</div>
 				<textarea
 					className="task-description"

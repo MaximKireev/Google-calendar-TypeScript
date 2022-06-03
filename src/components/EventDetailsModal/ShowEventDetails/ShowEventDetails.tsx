@@ -26,11 +26,10 @@ export const EventDetailsPopup = () => {
   const id = useSelector(selectCurrentSelectedEventId);
   const isEventModalEditable = useSelector(setIsEventModalEditable);
 
-  const events = getLocalStorageData("events");
+  const events = getLocalStorageData("events") || [];
   const filteredEventData = events.filter(
     (item: CalendarEventData) => item.uniqueEventId === id
   );
-  console.log(filteredEventData)
   const eventTitleValue = useInput(filteredEventData[0].title, false);
   const eventDescriptionValue = useInput(
     filteredEventData[0].description,
@@ -64,7 +63,7 @@ export const EventDetailsPopup = () => {
 
     toast.success("Event succefully updated!", {
 			position: toast.POSITION.TOP_CENTER,
-			autoClose: 2000, 
+			autoClose: 1500, 
 		  });
   };
   return (

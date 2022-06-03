@@ -14,8 +14,9 @@ export const DayViewCalendar = () => {
   const listOfEventsThisDay = listOfEvents.filter(
     (event) => event.date === currentSelectedDate
   );
+
   const [eventsWithCoordinates, seteventsWithCoordinates] =
-    React.useState<{}[]>();
+    React.useState<{}[]>([]);
 
   React.useEffect(() => {
     const timeSlots = Array.from(
@@ -27,17 +28,17 @@ export const DayViewCalendar = () => {
       let id = t.id;
       arr.push({ id, top: coordinates.top });
     }
-    if (listOfEventsThisDay.length > 0) {
-      let newArr: any[] = [];
-      listOfEventsThisDay.map((item) => {
-        let a = arr.filter((item_a) => item.timeFrom === item_a.id);
-        let b = arr.filter((item_b) => item.timeTo === item_b.id);
-        newArr.push({ ...item, x1: a[0].top, x2: b[0].top });
-      });
+
+    let newArr: any[] = [];
+    if (listOfEventsThisDay.length > 0) { 
+    listOfEventsThisDay.map((item) => {
+      let a = arr.filter((item_a) => item.timeFrom === item_a.id);
+      let b = arr.filter((item_b) => item.timeTo === item_b.id);
+      newArr.push({ ...item, x1: a[0].top, x2: b[0].top });
       seteventsWithCoordinates(newArr);
 
-    }
-  }, [currentSelectedDate]);
+    })} 
+  }, []);
 
   return (
     <div className="day-view-wrapper" style={{ width: "100%" }}>
@@ -60,10 +61,14 @@ export const DayViewCalendar = () => {
         {day_hours.map((item) => (
           <HourCell time={item} currentSelectedDate={currentSelectedDate} />
         ))}
-        {eventsWithCoordinates
+        {listOfEventsThisDay.length > 0
           ? eventsWithCoordinates.map((event: any) => (
-              <EventInDayView top={event.x1} height={event.x2 - event.x1} description = {event.description} />
-            ))
+            <EventInDayView
+              top={event.x1}
+              height={event.x2 - event.x1}
+              description={event.description}
+            />
+          ))
           : null}
       </ErrorBoundary>
     </div>
