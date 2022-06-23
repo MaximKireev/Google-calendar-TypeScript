@@ -3,13 +3,6 @@ import { useSelector } from "react-redux";
 import Header from "../Header/Header";
 import "./BaseLayout.css";
 import { Sidebar } from "../SideBar/SideBar";
-import {
-  selectIsSideBarVisible,
-  selectIsEventCreatorWindowVisible,
-  selectIsEventModalVisible,
-  selectisLoginWindowVisible,
-  selectCurrentCalendarView,
-} from "../../redux/selectors";
 import Calendar from "../MonthViewCalendar/MonthCalendar";
 import { YearViewCalendar } from "../year-view-calendar/YearViewCalendar";
 import EventCreatorDialog from "../EventCreator/EventCreatorDialog";
@@ -17,16 +10,18 @@ import { EventDetailsPopup } from "../EventDetailsModal/ShowEventDetails/ShowEve
 import { LoginWindow } from "../Header/LoginComponent/LoginWindow";
 import { ListOfEventsView } from '../../components/list-of-events-calendar/ListOfEventsView'
 import { DayViewCalendar } from '../../components/day-view-calendar/DayViewCalendar'
+import {
+  selectCurrentCalendarView, selectIsEventCreatorWindowVisible,
+  selectIsEventModalVisible,
+  selectisLoginWindowVisible, selectIsSideBarVisible
+} from "../../redux/ui-events/ui-events-selectors";
 
 export const BaseLayout: React.FC = () => {
   const isSideBarVisible = useSelector(selectIsSideBarVisible);
-  const isEventCreatorWindowVisible = useSelector(
-    selectIsEventCreatorWindowVisible
-  );
+  const isEventCreatorWindowVisible = useSelector(selectIsEventCreatorWindowVisible);
   const isEventModalVisible = useSelector(selectIsEventModalVisible);
   const isLoginWindowVisible = useSelector(selectisLoginWindowVisible);
   const currentCalendarView = useSelector(selectCurrentCalendarView);
-
 
 	return (
 		<div className="baseLayout-wrapper">

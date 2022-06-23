@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import "./MonthCalendarEvent.css";
-import { CalendarEventData } from "../../../ts-generalTypes/InitialStateInterfaces";
-import { openEventModalPopup } from '../../../redux/actions/actionsUI'
-import { setSelectedEventId } from '../../../redux/actions/actionsCalendar'
+import { openEventModalPopup } from '../../../redux/ui-events/ui-events-actions'
+import { setSelectedEventId } from '../../../redux/calendar-events/calendar-events-actions'
+import {EventDataItem} from "../../../redux/calendar-events/calendar-events-reducer";
 
 interface MonthCalendarEventProps {
-	events: CalendarEventData,
+	events: EventDataItem,
 	size?: string
 }
 

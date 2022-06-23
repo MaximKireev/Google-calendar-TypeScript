@@ -7,16 +7,16 @@ import "antd/dist/antd.css";
 import { toast } from "react-toastify";
 import moment from 'moment';
 import "./EventCreatorDialog.css";
-import { closeEventCreatorWindow } from "../../redux/actions/actionsUI";
-import { addNewEventToList } from "../../redux/actions/actionsCalendar";
+import { closeEventCreatorWindow } from "../../redux/ui-events/ui-events-actions";
+import { addNewEventToList } from "../../redux/calendar-events/calendar-events-actions";
 import {
 	getLocalStorageData,
 	setLocalStorageData,
 } from "../../helpers/local-storage-utils";
-import { selectCurrentSelectedEventId } from "../../redux/selectors";
 import { useInput } from "../../hooks/useInput";
 import { useTextArea } from "../../hooks/useTextArea";
 import { useTimePicker } from "../../hooks/useTimePicker";
+import {selectCurrentSelectedEventId} from "../../redux/calendar-events/calendar-events-selectors";
 
 const EventCreatorDialog = () => {
 	const dispatch = useDispatch();

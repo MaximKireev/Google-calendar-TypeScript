@@ -5,13 +5,8 @@ import type { DatePickerProps } from 'antd';
 import moment from "moment";
 import {toast} from 'react-toastify'
 import { EventDetailsModalLayout } from "../EventDetailsModalLayout";
-import {
-  selectCurrentSelectedEventId,
-  setIsEventModalEditable,
-} from "../../../redux/selectors";
-import { makeEventDetailsModalEditable } from "../../../redux/actions/actionsUI";
-import { updateEventData } from "../../../redux/actions/actionsCalendar";
-import { CalendarEventData } from "../../../ts-generalTypes/InitialStateInterfaces";
+import { makeEventDetailsModalEditable } from "../../../redux/ui-events/ui-events-actions";
+import { updateEventData } from "../../../redux/calendar-events/calendar-events-actions";
 import "./ShowEventDetails.css";
 import { useInput } from "../../../hooks/useInput";
 import { useTimePicker } from "../../../hooks/useTimePicker";
@@ -20,6 +15,9 @@ import {
   getLocalStorageData,
   setLocalStorageData,
 } from "../../../helpers/local-storage-utils";
+import {selectCurrentSelectedEventId} from "../../../redux/calendar-events/calendar-events-selectors";
+import {setIsEventModalEditable} from "../../../redux/ui-events/ui-events-selectors";
+import {EventDataItem} from "../../../redux/calendar-events/calendar-events-reducer";
 
 export const EventDetailsPopup = () => {
   const dispatch = useDispatch();
@@ -28,7 +26,7 @@ export const EventDetailsPopup = () => {
 
   const events = getLocalStorageData("events") || [];
   const filteredEventData = events.filter(
-    (item: CalendarEventData) => item.uniqueEventId === id
+    (item: EventDataItem) => item.uniqueEventId === id
   );
   const eventTitleValue = useInput(filteredEventData[0].title, false);
   const eventDescriptionValue = useInput(
@@ -49,7 +47,7 @@ export const EventDetailsPopup = () => {
     };
     dispatch(updateEventData(updatedEventObject));
     const updateIndex = events
-      .map((item: CalendarEventData) => item.uniqueEventId)
+      .map((item: EventDataItem) => item.uniqueEventId)
       .indexOf(id);
 
     setLocalStorageData(

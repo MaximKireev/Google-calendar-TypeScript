@@ -1,6 +1,15 @@
-import { createStore } from "redux";
-import { masterReducer } from "./reducers/masterReducer";
+import {combineReducers, createStore} from "redux";
+import UIComponentsreducer, {UiEventsState} from "./ui-events/ui-events-reducer";
+import calendarEventsReducer, {CalendarEventsState} from "./calendar-events/calendar-events-reducer";
 
-// const persistedState = loadState();
-const store = createStore(masterReducer);
+export type RootState = {
+  uiReducer: UiEventsState,
+  calendar: CalendarEventsState,
+};
+
+const store = createStore(combineReducers({
+  uiReducer: UIComponentsreducer,
+  calendar: calendarEventsReducer,
+}));
+
 export default store;

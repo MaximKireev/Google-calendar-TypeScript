@@ -1,7 +1,7 @@
 import React from 'react'
 import { Radio, RadioChangeEvent } from 'antd';
 import { useDispatch } from 'react-redux';
-import { changeCalendarView } from '../../../redux/actions/actionsUI'
+import { changeCalendarView } from '../../../redux/ui-events/ui-events-actions'
 
 export const CalendarViewChanger = () => {
   const dispatch = useDispatch()

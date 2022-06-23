@@ -1,18 +1,18 @@
 import React from "react";
 import { Collapse, Badge } from "antd";
 import { useSelector } from "react-redux";
-import { setListOfEventsInStorage } from "../../redux/selectors";
-import { CalendarEventData } from "../../ts-generalTypes/InitialStateInterfaces";
+import {setListOfEventsInStorage} from "../../redux/calendar-events/calendar-events-selectors";
+import {EventDataItem} from "../../redux/calendar-events/calendar-events-reducer";
 
 const { Panel } = Collapse;
 
 interface AccProps {
-	[key: string]: CalendarEventData[];
+	[key: string]: EventDataItem[];
 }
 
 export const ListOfEventsView = () => {
 	const listOfEvents = useSelector(setListOfEventsInStorage).reduce(
-		(acc: AccProps, curVal: CalendarEventData) => {
+		(acc: AccProps, curVal: EventDataItem) => {
 			let val: string = curVal.date!.slice(2);
 			if (acc.hasOwnProperty(val)) {
 				acc[val].push(curVal);

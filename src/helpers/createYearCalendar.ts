@@ -1,5 +1,5 @@
 import { daysInMonth } from "./fixtures";
-import { DayType } from "../ts-generalTypes/propTypes";
+import {DayDataItem} from "../redux/calendar-events/calendar-events-reducer";
 
 
 export const createYearCalendarMatrix = (date: Date) => {
@@ -20,7 +20,7 @@ export const createYearCalendarMatrix = (date: Date) => {
 	let prevMonth = (month - 1) < 0 ? 0 : month - 1
 	let counterAfter: number = 1;
 	let counterBefore: number = 1;
-	const matrix: DayType[][] = [];
+	const matrix: DayDataItem[][] = [];
 
 	for (let row = 0; row < 6; row++) {
 		matrix.push([]);

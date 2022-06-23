@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import Draggable from "react-draggable";
 import { useDispatch } from 'react-redux';
-import { hideLoginWindow } from '../../../redux/actions/actionsUI'
+import { hideLoginWindow } from '../../../redux/ui-events/ui-events-actions'
 
 import './LoginWindow.css'
 

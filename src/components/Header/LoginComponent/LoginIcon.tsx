@@ -1,7 +1,7 @@
 import React from 'react'
 import { LoginOutlined } from '@ant-design/icons'
 import { useDispatch } from 'react-redux'
-import { showLoginWindow } from '../../../redux/actions/actionsUI'
+import { showLoginWindow } from '../../../redux/ui-events/ui-events-actions'
 
 
 export const LoginIcon = () => {

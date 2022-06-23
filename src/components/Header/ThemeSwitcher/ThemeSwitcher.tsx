@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Switch } from "antd";
-import { changeColorTheme } from "../../../redux/actions/actionsUI";
+import { changeColorTheme } from "../../../redux/ui-events/ui-events-actions";
 
 import {
 	getLocalStorageData,

@@ -6,16 +6,16 @@ import { CloseOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import {
 	closeEventModalPopup,
 	makeEventDetailsModalEditable,
-} from "../../redux/actions/actionsUI";
-import { deleteEvent } from "../../redux/actions/actionsCalendar";
+} from "../../redux/ui-events/ui-events-actions";
+import { deleteEvent } from "../../redux/calendar-events/calendar-events-actions";
 import Draggable from "react-draggable";
 import "./EventDetailsModalLayout.css";
-import { selectCurrentSelectedEventId } from "../../redux/selectors";
-import { CalendarEventData } from "../../ts-generalTypes/InitialStateInterfaces";
 import {
 	getLocalStorageData,
 	setLocalStorageData,
 } from "../../helpers/local-storage-utils";
+import {selectCurrentSelectedEventId} from "../../redux/calendar-events/calendar-events-selectors";
+import {EventDataItem} from "../../redux/calendar-events/calendar-events-reducer";
 
 export const EventDetailsModalLayout = (props: any) => {
 	const { children } = props;
@@ -23,7 +23,7 @@ export const EventDetailsModalLayout = (props: any) => {
 	const id = useSelector(selectCurrentSelectedEventId) || "";
 	const events = getLocalStorageData("events");
 	const filteredEventData = events.filter(
-		(item: CalendarEventData) => item.uniqueEventId.toString() !== id
+		(item: EventDataItem) => item.uniqueEventId.toString() !== id
 	);
 
 	const deleteEventHandler = () => {
