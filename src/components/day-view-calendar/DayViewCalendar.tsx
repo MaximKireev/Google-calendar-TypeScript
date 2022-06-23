@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { HourCell } from "./HourCell";
 import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
 import { EventInDayView } from "./EventInDayView";
+import { day_hours } from "../../helpers/fixtures";
 import {
   selectCurrentSelectedDate,
-  setListOfEventsInStorage,
-} from "../../redux/selectors";
-import { day_hours } from "../../helpers/fixtures";
+  setListOfEventsInStorage
+} from "../../redux/calendar-events/calendar-events-selectors";
 export const DayViewCalendar = () => {
   const currentSelectedDate = useSelector(selectCurrentSelectedDate) || "";
   const listOfEvents = useSelector(setListOfEventsInStorage) || [];

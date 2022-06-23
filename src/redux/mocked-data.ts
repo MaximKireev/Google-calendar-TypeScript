@@ -1,6 +1,6 @@
-import { CalendarEventData } from "../ts-generalTypes/InitialStateInterfaces";
+import {EventDataItem} from "./calendar-events/calendar-events-reducer";
 
-export const mockedData: CalendarEventData[] = [
+export const mockedData: EventDataItem[] = [
 	{
 		uniqueEventId: "441341341234",
 		date: "1.5.2022",

@@ -1,10 +1,10 @@
 import { daysInMonth } from "./fixtures";
-import { DayType } from "../ts-generalTypes/propTypes";
+import {DayDataItem} from "../redux/calendar-events/calendar-events-reducer";
 
 let year: number = new Date().getUTCFullYear();
 let month: number = new Date().getUTCMonth();
 
-export const createCalendarMatrix = (date = new Date(), monthChange = 0, defaultMonth?: number, defaultYear?: number): DayType[][] => {
+export const createCalendarMatrix = (date = new Date(), monthChange = 0, defaultMonth?: number, defaultYear?: number): DayDataItem[][] => {
 	month = month + monthChange;
 	defaultMonth? month = defaultMonth: month;
 	defaultYear? year = defaultYear : year;
@@ -24,7 +24,7 @@ export const createCalendarMatrix = (date = new Date(), monthChange = 0, default
 	let prevMonth = (month - 1) < 0 ? 0 : month - 1
 	let counterAfter: number = 1;
 	let counterBefore: number = 1;
-	const matrix: DayType[][] = [];
+	const matrix: DayDataItem[][] = [];
 
 	for (let row = 0; row < 6; row++) {
 		matrix.push([]);

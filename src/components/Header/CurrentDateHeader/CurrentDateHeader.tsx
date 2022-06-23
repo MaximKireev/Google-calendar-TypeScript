@@ -1,7 +1,7 @@
 import React from "react";
 import './CurrentDateHeader.css'
 import { useSelector } from "react-redux";
-import { selectCurrentCalendar } from "../../../redux/selectors";
+import {selectCurrentCalendar} from "../../../redux/calendar-events/calendar-events-selectors";
 
 export const CurrentDateHeader = () => {
 	const currentCalendar = useSelector(selectCurrentCalendar)!;

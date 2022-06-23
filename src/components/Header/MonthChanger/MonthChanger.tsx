@@ -3,7 +3,7 @@ import './MonthChanger.css'
 import {LeftOutlined, RightOutlined} from '@ant-design/icons'
 import React from 'react'
 import { useDispatch } from "react-redux";
-import {monthReverse, monthForward} from '../../../redux/actions/actionsCalendar'
+import {monthReverse, monthForward} from '../../../redux/calendar-events/calendar-events-actions'
 
 export const MonthChanger = () => {
 

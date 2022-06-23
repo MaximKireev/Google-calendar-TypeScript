@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import {setToday} from '../../../redux/actions/actionsCalendar'
+import {setToday} from '../../../redux/calendar-events/calendar-events-actions'
 import { Button } from "antd";
 
 

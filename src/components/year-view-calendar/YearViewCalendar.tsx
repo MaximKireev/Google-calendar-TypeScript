@@ -3,7 +3,7 @@ import './YearViewCalendar.css'
 import Calendar from '../MonthViewCalendar/MonthCalendar';
 import { useSelector } from 'react-redux';
 import {createYearCalendarMatrix} from '../../helpers/createYearCalendar';
-import {selectCurrentDate} from '../../redux/selectors'
+import {selectCurrentDate} from "../../redux/calendar-events/calendar-events-selectors";
 
 export const YearViewCalendar = () => {
     const {year} = useSelector(selectCurrentDate)!
